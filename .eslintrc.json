@@ -20,6 +20,8 @@
     "rules": {
       "react/react-in-jsx-scope" : "off",
       "no-unused-vars": "off",
-      "react/prop-types": "off"
+      "react/prop-types": "off",
+      "react/function-component-definition": "off",
+      "no-shadow": "off"
     }
 }
