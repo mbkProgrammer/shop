@@ -1,6 +1,22 @@
-import { Button, Input } from '../../components';
+import {
+  Button, Input, Quantity, Dropdown,
+} from '../../components';
 
 export default function components() {
+  const datalists = [
+    {
+      name: 'mbk',
+      value: 'mbk',
+    },
+    {
+      name: 'ali',
+      value: 'ali',
+    },
+    {
+      name: 'reza',
+      value: 'reza',
+    },
+  ];
   return (
     <div>
 
@@ -22,6 +38,16 @@ export default function components() {
       <Input placeholder="input" size="small" />
       <br />
       <Input placeholder="input" size="mobile" />
+      <br />
+      <br />
+      <Quantity />
+      <br />
+      <br />
+      <Dropdown datalists={datalists} />
+      <br />
+      <Dropdown datalists={datalists} size="mobile" />
+      <br />
+      <Dropdown datalists={datalists} size="small" />
     </div>
   );
 }
