@@ -1,5 +1,6 @@
+import { css, cx } from '@emotion/css';
 import {
-  Button, Input, Quantity, Dropdown,
+  Button, Input, Quantity, Dropdown, Card,
 } from '../../components';
 
 export default function components() {
@@ -18,16 +19,25 @@ export default function components() {
     },
   ];
   return (
-    <div>
-
+    <div
+      className={css`
+        padding-bottom: 100px;
+      `}
+    >
       <Button varaint="text">button</Button>
-      <Button varaint="text" big>button</Button>
+      <Button varaint="text" big>
+        button
+      </Button>
       <br />
       <Button varaint="outlined">button</Button>
-      <Button varaint="outlined" big>button</Button>
+      <Button varaint="outlined" big>
+        button
+      </Button>
       <br />
       <Button varaint="contained">button</Button>
-      <Button varaint="contained" big>button</Button>
+      <Button varaint="contained" big>
+        button
+      </Button>
       <br />
       <br />
 
@@ -37,7 +47,6 @@ export default function components() {
       <br />
       <Input placeholder="input" size="small" />
       <br />
-      <Input placeholder="input" size="mobile" />
       <br />
       <br />
       <Quantity />
@@ -45,9 +54,30 @@ export default function components() {
       <br />
       <Dropdown datalists={datalists} />
       <br />
-      <Dropdown datalists={datalists} size="mobile" />
-      <br />
       <Dropdown datalists={datalists} size="small" />
+      <br />
+      <br />
+      <br />
+      <div
+        className={css`
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-wrap: wrap;
+          @media (max-width: 480px) {
+            flex-direction: column;
+          }
+        `}
+      >
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+      </div>
     </div>
   );
 }

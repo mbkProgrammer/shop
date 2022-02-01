@@ -3,10 +3,13 @@ import styled from '@emotion/styled';
 import { css, cx } from '@emotion/css';
 import { v4 as uuidv4 } from 'uuid';
 
-const Dropdown = ({ label = 'label', datalists = [], size = 'normal' }) => {
+const Dropdown = ({
+  label = 'label', datalists = [], size = 'normal', name,
+}) => {
   const dropdownId = uuidv4();
   const Dropdown = styled.div`
-  -webkit-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
     height: 40px;
     width: 445px;
     margin: 2px;
@@ -18,19 +21,24 @@ const Dropdown = ({ label = 'label', datalists = [], size = 'normal' }) => {
     &:hover {
       border: 1.5px solid rgba(96, 188, 138, 1);
     }
-    &.dropdown--small{
+    &.dropdown--small {
       width: 140px;
+      .DropdowonInput {
+        background-position-x: 98%;
+      }
     }
-    &.dropdown--mobile{
+    @media (max-width: 480px) {
       width: 347px;
+      &.dropdown--small {
+        width: 140px;
+      }
+    }
+    @media (max-width: 350px) {
+      width: 307px;
     }
   `;
 
   const DropdowonInput = styled.input`
-    -o-appearance: none;
-    -ms-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
     width: 100%;
     font-size: 16px;
     font-weight: 400;
@@ -46,7 +54,7 @@ const Dropdown = ({ label = 'label', datalists = [], size = 'normal' }) => {
     & {
       background: url(http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png)
         no-repeat right #fafafa;
-      background-position-x: 98%;
+      background-position-x: 99%;
     }
   `;
 
@@ -67,8 +75,10 @@ const Dropdown = ({ label = 'label', datalists = [], size = 'normal' }) => {
       >
         {label}
       </label>
-      <DropdowonInput list="dropDownList" id={dropdownId} type="text" />
-      <datalist id="dropDownList" className="datalist">
+      <DropdowonInput list="dropDownList" id={dropdownId} type="search" autoComplete="off" name={name} className="DropdowonInput" />
+      <datalist
+        id="dropDownList"
+      >
         {datalists.map((item) => (
           <option value={item.value}>{item.name}</option>
         ))}

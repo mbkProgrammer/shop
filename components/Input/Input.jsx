@@ -8,6 +8,7 @@ const Input = ({ placeholder = 'input', size = 'medium' }) => {
   font-weight: 400;
   line-height: 25px;
   border: 0.5px solid rgba(86, 178, 128, 0.8) ;
+  width: 445px;
   &:focus {
     outline: none;
     border: 1.5px solid rgba(96, 188, 138, 1) ;
@@ -24,8 +25,14 @@ const Input = ({ placeholder = 'input', size = 'medium' }) => {
   &.input--medium{
     width: 216px;
   }
-  &.input--mobile{
-    width: 346px;
+  @media (max-width: 480px){
+    &.input--big{
+      width: 347px;
+    }
+  @media (max-width: 350px){
+    &.input--big{
+      width: 307px;
+    }
   }
   `;
   return (
