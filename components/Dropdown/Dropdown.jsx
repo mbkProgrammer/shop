@@ -53,7 +53,7 @@ const Dropdown = ({
     }
     & {
       background: url(http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png)
-        no-repeat right #fafafa;
+        no-repeat right none;
       background-position-x: 99%;
     }
   `;
@@ -80,7 +80,7 @@ const Dropdown = ({
         id="dropDownList"
       >
         {datalists.map((item) => (
-          <option value={item.value}>{item.name}</option>
+          <option value={item.value} key={uuidv4()}>{item.name}</option>
         ))}
       </datalist>
     </Dropdown>

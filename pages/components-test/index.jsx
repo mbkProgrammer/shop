@@ -1,6 +1,6 @@
 import { css, cx } from '@emotion/css';
 import {
-  Button, Input, Quantity, Dropdown, Card,
+  Button, Input, Quantity, Dropdown, Card, Layout,
 } from '../../components';
 
 export default function components() {
@@ -19,11 +19,7 @@ export default function components() {
     },
   ];
   return (
-    <div
-      className={css`
-        padding-bottom: 100px;
-      `}
-    >
+    <Layout>
       <Button varaint="text">button</Button>
       <Button varaint="text" big>
         button
@@ -78,6 +74,6 @@ export default function components() {
         <Card />
         <Card />
       </div>
-    </div>
+    </Layout>
   );
 }
