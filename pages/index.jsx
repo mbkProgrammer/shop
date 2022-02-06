@@ -19,7 +19,7 @@ export default function Home() {
         <div className="Shop__products">
           {
             PRODUCT.map((item) => (
-              <Card key={item.id} title={item.name} imageAlt={item.name} imageSrc={item.img} path={`/${item.id}`} price={item.price} />
+              <Card key={item.id} title={item.name} imageAlt={item.name} imageSrc={item.img} path={`/Products/${item.id}`} price={item.price} />
             ))
           }
         </div>

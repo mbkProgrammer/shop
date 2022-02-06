@@ -9,6 +9,8 @@ const Button = ({ varaint = 'text', children, big = false }) => {
   font-weight: 400;
   border: none;
   margin: 2px;
+  width: 100%;
+  transition: 0.3s;
   &.btn--text {
     color: black;
     background: none;
@@ -23,12 +25,17 @@ const Button = ({ varaint = 'text', children, big = false }) => {
     color: var(--background);
   }
   &:hover{
-    transition: 3s;
     background-image: linear-gradient(rgba(0, 0, 0, 0.2) 0 0);
   }
   &.btn--big {
     padding: 8px 96px;
   }
+  @media (max-width: 380px){
+    &.btn--big {
+      padding: 8px 66px;
+    }
+  }
+
   `;
 
   return <Button className={`btn--${varaint} ${big ? 'btn--big' : ''}`}>{children}</Button>;

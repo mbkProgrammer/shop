@@ -1,10 +1,11 @@
+/* eslint-disable no-param-reassign */
 /* eslint-disable no-const-assign */
 /* eslint-disable no-return-assign */
 import { useState } from 'react';
 import styled from '@emotion/styled';
 import { css, cx } from '@emotion/css';
 
-const Quantity = () => {
+const Quantity = ({ setItemNum, itemNum = 0 }) => {
   const Quantity = styled.div`
   width: 75px;
   height: 61px;
@@ -30,9 +31,14 @@ const Quantity = () => {
     background: var(--primary);
   color: var(--background);
   }
+  &:disabled {
+    color: #888;
+  }
+  &:disabled:hover {
+    background: none;
+    color: #666;
+  }
   `;
-
-  const [quantityNum, setQuantityNum] = useState(0);
 
   return (
     <Quantity>
@@ -40,9 +46,9 @@ const Quantity = () => {
         Quantity
       </div>
       <div className={css`height: 50%; width: 100%; display: flex; justify-content: space-between; align-items: center; border: 1px solid var(--primary); cursor: pointer;`}>
-        <QuantityBtn type="button" onClick={() => setQuantityNum(quantityNum += 1)}>+</QuantityBtn>
-        <div>{quantityNum}</div>
-        <QuantityBtn type="button" onClick={() => setQuantityNum(quantityNum -= 1)}>-</QuantityBtn>
+        <QuantityBtn type="button" onClick={() => setItemNum(itemNum += 1)}>+</QuantityBtn>
+        <div>{itemNum}</div>
+        <QuantityBtn type="button" onClick={() => setItemNum(itemNum -= 1)} disabled={itemNum === 1}>-</QuantityBtn>
       </div>
     </Quantity>
   );
