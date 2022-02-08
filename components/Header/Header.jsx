@@ -3,11 +3,13 @@ import styled from '@emotion/styled';
 import { FaRegUser, FaBars } from 'react-icons/fa';
 import { BsCart3 } from 'react-icons/bs';
 import { useRouter } from 'next/router';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import CartContext from '../../context/CartContext';
 
-const Header = ({ cart = 0 }) => {
+const Header = () => {
   const router = useRouter();
   const [toggleActive, setToggleActive] = useState(false);
+  const { carts } = useContext(CartContext);
 
   const Nav = styled.ul`
     display: flex;
@@ -108,7 +110,7 @@ const Header = ({ cart = 0 }) => {
           }
 
           .Cart::after {
-            content: "${cart}";
+            content: "${carts.length}";
             font-size: 10px;
             color: var(--background);
             background: var(--primary);

@@ -1,15 +1,16 @@
 import styled from '@emotion/styled';
 
-const Button = ({ varaint = 'text', children, big = false }) => {
+const Button = ({
+  varaint = 'text', children, onClick, size = 'medium',
+}) => {
   const Button = styled.button`
-  padding: 8px 44px;
   border-radius: 5px;
   color: var(--primary);
   font-size: 19px;
   font-weight: 400;
   border: none;
-  margin: 2px;
-  width: 100%;
+  border-radius: 5px;
+  margin: 5px;
   transition: 0.3s;
   &.btn--text {
     color: black;
@@ -28,17 +29,22 @@ const Button = ({ varaint = 'text', children, big = false }) => {
     background-image: linear-gradient(rgba(0, 0, 0, 0.2) 0 0);
   }
   &.btn--big {
-    padding: 8px 96px;
+    padding: 8px 56px;
+    width: 100%;
   }
-  @media (max-width: 380px){
-    &.btn--big {
-      padding: 8px 66px;
-    }
+
+  &.btn--small {
+    padding: 8px 0;
+    width: 140px;
+  }
+
+  &.btn--medium {
+    padding: 8px 44px;
   }
 
   `;
 
-  return <Button className={`btn--${varaint} ${big ? 'btn--big' : ''}`}>{children}</Button>;
+  return <Button className={`btn--${varaint} btn--${size} `} onClick={onClick}>{children}</Button>;
 };
 
 export default Button;

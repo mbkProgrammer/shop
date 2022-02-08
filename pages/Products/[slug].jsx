@@ -1,14 +1,32 @@
 /* eslint-disable camelcase */
+import { useContext, useState } from 'react';
 import Head from 'next/head';
-import { useState } from 'react';
 import { BsCart3 } from 'react-icons/bs';
 import { Layout, Quantity, Button } from '../../components';
 import PRODUCTS from '../api/Products.json';
+import CartContext from '../../context/CartContext';
 
 const Products = ({ plan_id }) => {
   const [itemNum, setItemNum] = useState(1);
+  const { carts, dispatchCart } = useContext(CartContext);
 
+  const added = carts.find((carts) => carts.id === plan_id.slug);
   const product = PRODUCTS.find((item) => item.id === plan_id.slug);
+
+  const handleAddToCart = () => {
+    if (added) {
+      dispatchCart({
+        type: 'REMOVE_FROM_CART',
+        id: plan_id.slug,
+      });
+    } else {
+      dispatchCart({
+        type: 'ADD_TO_CART',
+        id: plan_id.slug,
+        quantity: itemNum,
+      });
+    }
+  };
 
   return (
     <Layout>
@@ -29,10 +47,20 @@ const Products = ({ plan_id }) => {
               <Quantity itemNum={itemNum} setItemNum={setItemNum} />
               <div className="singleProduct__price">{product.price * itemNum}</div>
             </div>
-            <Button varaint="outlined" big>
-              <BsCart3 />
-              +Add to cart
-            </Button>
+            {
+                !added ? (
+                  <Button varaint="contained" size="big" onClick={handleAddToCart}>
+                    <BsCart3 />
+                    Add to cart
+                  </Button>
+                )
+                  : (
+                    <Button varaint="contained" size="big" onClick={handleAddToCart}>
+                      <BsCart3 />
+                      Remove from cart
+                    </Button>
+                  )
+              }
           </div>
         </div>
       </div>
