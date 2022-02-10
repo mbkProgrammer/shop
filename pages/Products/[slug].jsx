@@ -2,7 +2,7 @@
 import { useContext, useState } from 'react';
 import Head from 'next/head';
 import { BsCart3 } from 'react-icons/bs';
-import {Quantity, Button } from '../../components';
+import { Quantity, Button } from '../../components';
 import PRODUCTS from '../api/Products.json';
 import CartContext from '../../context/CartContext';
 import { Layout } from '../../containers';

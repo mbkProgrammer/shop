@@ -11,7 +11,6 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="shop">
-        <img src="assets/img/products.jpg" alt="mbk plant shop" className="shop__img" />
         <div className="Shop__tittle">
           <h2>Products</h2>
           <p>Order it for you or for your beloved ones </p>
@@ -31,11 +30,6 @@ export default function Home() {
             display: flex;
             flex-direction: column;
             align-items: center;
-          }
-          .shop__img {
-            width: 95vw;
-            height: 50vw;
-            margin:10px auto;
           }
           .Shop__tittle {
             text-align: center;

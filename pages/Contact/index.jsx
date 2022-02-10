@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import {
-   Input, Textarea, Button,
+  Input, Textarea, Button,
 } from '../../components';
 import { Layout } from '../../containers';
 
@@ -12,7 +12,7 @@ const Contact = () => (
       </title>
     </Head>
     <div className="contact">
-      <img src="assets/img/Contact.png" alt="contact us" className="contact__img" />
+      <img src="assets/img/Contact.jpg" alt="contact us" className="contact__img" />
       <div className="contact__form">
         <h1>Contact Us</h1>
         <Input placeholder="Full Name" size="small" type="text" />
@@ -24,35 +24,36 @@ const Contact = () => (
 
     <style jsx>
       {`
-        .contact {
-          display: flex;
-          justify-content: space-around;
-        }
-        .contact__img {
-          height: 400px;
-        }
-        .contact__form {
-          margin-right: 80px;
-          display: flex;
-          flex-direction: column;
-        }
-        @media (max-width: 480px) {
           .contact {
-            flex-direction: column-reverse;
-            justify-content: center;
-            align-items: center;
+            display: flex;
+            justify-content: space-around;
           }
           .contact__img {
+            width: 50vw;
             height: 100%;
-            width: 85vw;
           }
           .contact__form {
-            margin-right: 0;
-            margin-bottom: 60px;
-            align-items: center;
+            margin-right: 80px;
+            display: flex;
+            flex-direction: column;
           }
-        }
-      `}
+          @media (max-width: 700px) {
+            .contact {
+              flex-direction: column-reverse;
+              justify-content: center;
+              align-items: center;
+            }
+            .contact__img {
+              height: 100%;
+              width: 85vw;
+            }
+            .contact__form {
+              margin-right: 0;
+              margin-bottom: 60px;
+              align-items: center;
+            }
+          }
+        `}
     </style>
   </Layout>
 );

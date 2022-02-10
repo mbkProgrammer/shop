@@ -3,13 +3,19 @@ import styled from '@emotion/styled';
 import { FaRegUser, FaBars } from 'react-icons/fa';
 import { BsCart3 } from 'react-icons/bs';
 import { useRouter } from 'next/router';
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import CartContext from '../../context/CartContext';
+import useLocalStorage from '../../hooks/useLocalStorage';
 
 const Header = () => {
   const router = useRouter();
   const [toggleActive, setToggleActive] = useState(false);
+  const [cartsStorage, setCartsStorage] = useLocalStorage('cartsStorage');
   const { carts } = useContext(CartContext);
+
+  useEffect(() => {
+    setCartsStorage(JSON.stringify(carts));
+  }, [JSON.stringify(carts)]);
 
   const Nav = styled.ul`
     display: flex;

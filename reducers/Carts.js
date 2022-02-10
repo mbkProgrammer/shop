@@ -10,6 +10,11 @@ const CartReducers = (state, action) => {
           { id: action.id, quantity: action.quantity },
         ],
       };
+    case 'UPDATE_CART':
+      return {
+        ...state,
+        carts: action.carts,
+      };
     case 'REMOVE_FROM_CART':
       let newCarts = state.carts;
       const removeIndex = state.carts.findIndex((cartId) => cartId.id === action.id);
@@ -21,7 +26,6 @@ const CartReducers = (state, action) => {
         carts: newCarts,
       };
     default:
-      break;
   }
 };
 export default CartReducers;
