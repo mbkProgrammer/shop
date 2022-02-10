@@ -1,6 +1,6 @@
 import { css } from '@emotion/css';
 import Head from 'next/head';
-import { Layout } from '../../components';
+import { Layout } from '../../containers';
 
 const About = () => (
   <Layout>

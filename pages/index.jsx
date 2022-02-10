@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { Card, Layout } from '../components';
+import { Card, Layout } from '../containers';
 import PRODUCT from './api/Products.json';
 
 export default function Home() {

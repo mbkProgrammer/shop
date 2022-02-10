@@ -1,7 +1,8 @@
 import Head from 'next/head';
 import {
-  Layout, Input, Textarea, Button,
+   Input, Textarea, Button,
 } from '../../components';
+import { Layout } from '../../containers';
 
 const Contact = () => (
   <Layout>
