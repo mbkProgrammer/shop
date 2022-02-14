@@ -4,8 +4,11 @@
 import { useState } from 'react';
 import styled from '@emotion/styled';
 import { css, cx } from '@emotion/css';
+import { useTheme } from '@emotion/react';
 
-const Quantity = ({ setItemNum, itemNum = 0 }) => {
+const Quantity = ({ setItemNum, itemNum }) => {
+  const theme = useTheme();
+
   const Quantity = styled.div`
   width: 75px;
   height: 61px;
@@ -18,7 +21,7 @@ const Quantity = ({ setItemNum, itemNum = 0 }) => {
 
   const QuantityBtn = styled.button`
   background: none;
-  color: var(--primary);
+  color: ${theme.colors.primary};
   font-size: 18px;
   font-weight: 400;
   border: none;
@@ -28,8 +31,8 @@ const Quantity = ({ setItemNum, itemNum = 0 }) => {
   margin: 0;
   transition: 0.3s;
   &:hover {
-    background: var(--primary);
-  color: var(--background);
+  background: ${theme.colors.primary};
+  color: ${theme.colors.secondary};
   }
   &:disabled {
     color: #888;
@@ -42,10 +45,10 @@ const Quantity = ({ setItemNum, itemNum = 0 }) => {
 
   return (
     <Quantity>
-      <div className={css`height: 50%;`}>
+      <div className={css`height: 50%; color: ${theme.colors.text}`}>
         Quantity
       </div>
-      <div className={css`height: 50%; width: 100%; display: flex; justify-content: space-between; align-items: center; border: 1px solid var(--primary); cursor: pointer;`}>
+      <div className={css`height: 50%; width: 100%; display: flex; justify-content: space-between; align-items: center; border: 1px solid ${theme.colors.primary}; cursor: pointer;`}>
         <QuantityBtn type="button" onClick={() => setItemNum(itemNum += 1)}>+</QuantityBtn>
         <div>{itemNum}</div>
         <QuantityBtn type="button" onClick={() => setItemNum(itemNum -= 1)} disabled={itemNum === 1}>-</QuantityBtn>

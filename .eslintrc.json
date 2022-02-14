@@ -21,6 +21,7 @@
       "react/react-in-jsx-scope" : "off",
       "no-unused-vars": "off",
       "react/prop-types": "off",
+      "semi": "error",
       "react/function-component-definition": "off",
       "no-shadow": "off",
       "arrow-body-style": "warn"
