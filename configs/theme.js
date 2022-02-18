@@ -8,31 +8,31 @@ const theme = {
   typography: {
     body: {
       fontWeight: '300',
-      fontSize: '0.8rem',
+      fontSize: '1rem',
     },
-    H1: {
+    h1: {
       fontWeight: '700',
-      fontSize: '2.48rem',
+      fontSize: '2.4rem',
     },
-    H2: {
+    h2: {
+      fontWeight: '700',
+      fontSize: '2.2rem',
+    },
+    h3: {
       fontWeight: '700',
       fontSize: '2rem',
     },
-    H3: {
-      fontWeight: '700',
-      fontSize: '1.7rem',
-    },
-    H4: {
+    h4: {
       fontWeight: '600',
-      fontSize: '1.4rem',
+      fontSize: '1.8rem',
     },
-    H5: {
+    h5: {
       fontWeight: '600',
-      fontSize: '1.2rem',
+      fontSize: '1.6rem',
     },
-    H6: {
+    h6: {
       fontWeight: '500',
-      fontSize: '1rem',
+      fontSize: '1.4rem',
     },
   },
 };

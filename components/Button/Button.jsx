@@ -34,7 +34,7 @@ const Button = ({
   &.btn--contained {
     background: ${theme.colors.primary};
     border: 1px solid ${theme.colors.primary};
-    color: ${theme.colors.secondary};
+    color: #fafafa;
   }
   &.btn--contained:hover, &.btn--text:hover {
     background-image: linear-gradient(rgba(0, 0, 0, 0.2) 0 0);

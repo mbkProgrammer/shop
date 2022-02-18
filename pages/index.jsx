@@ -1,6 +1,8 @@
 import Head from 'next/head';
+import { css } from '@emotion/react';
 import { Card, Layout } from '../containers';
 import PRODUCT from './api/Products.json';
+import { Typography } from '../components';
 
 export default function Home() {
   return (
@@ -12,8 +14,8 @@ export default function Home() {
       </Head>
       <div className="shop">
         <div className="Shop__tittle">
-          <h2>Products</h2>
-          <p>Order it for you or for your beloved ones </p>
+          <Typography variant="h2">Products</Typography>
+          <Typography variant="body1">Order it for you or for your beloved ones </Typography>
         </div>
 
         <div className="Shop__products">

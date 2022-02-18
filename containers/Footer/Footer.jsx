@@ -3,8 +3,10 @@
 import Image from 'next/image';
 import { css, cx } from '@emotion/css';
 import { useRouter } from 'next/router';
+import { useTheme } from '@emotion/react';
 
 const Footer = () => {
+  const theme = useTheme();
   const router = useRouter();
   return (
     <div className="Footer">
@@ -37,14 +39,14 @@ const Footer = () => {
       <style jsx>
         {`
           .Footer {
-            background: #444;
+            background: ${theme.colors.text};
             max-width: 100vw;
             padding: 3vw 5vh;
             margin-top: 30px;
           }
           .Footer .Footer__content {
-            color: #fafafa;
-            border-top: 3px solid #fafafa;
+            color: ${theme.colors.secondary};
+            border-top: 3px solid ${theme.colors.secondary};
             padding-top: 10px;
             display: flex;
             justify-content: space-between;
@@ -54,7 +56,7 @@ const Footer = () => {
             display: flex;
             align-items: center;
             font-size: 25px;
-            color: var(--primary);
+            color: ${theme.colors.primary};
             margin-bottom: 15px;
           }
           .pages--list {
@@ -63,10 +65,11 @@ const Footer = () => {
             height: 100%;
             justify-content: space-between;
             align-items: center;
+            list-style: none;
           }
 
           .pages--list li {
-            color: var(--primary);
+            color: ${theme.colors.primary};
             font-size: 18px;
             line-height: 25px;
             cursor: pointer;

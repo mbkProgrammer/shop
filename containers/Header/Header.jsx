@@ -4,6 +4,7 @@ import { FaRegUser, FaBars } from 'react-icons/fa';
 import { BsCart3 } from 'react-icons/bs';
 import { useRouter } from 'next/router';
 import { useState, useContext, useEffect } from 'react';
+import { useTheme } from '@emotion/react';
 import CartContext from '../../context/CartContext';
 import useLocalStorage from '../../hooks/useLocalStorage';
 
@@ -12,6 +13,8 @@ const Header = () => {
   const [toggleActive, setToggleActive] = useState(false);
   const [cartsStorage, setCartsStorage] = useLocalStorage('cartsStorage');
   const { carts } = useContext(CartContext);
+
+  const theme = useTheme();
 
   useEffect(() => {
     setCartsStorage(JSON.stringify(carts));
@@ -26,7 +29,7 @@ const Header = () => {
       width: 100%;
       text-align: center;
       top: 50px;
-      background: var(--background);
+      background: ${theme.colors.background};
       &.active {
         display: flex;
       }
@@ -39,11 +42,12 @@ const Header = () => {
     font-size: 20px;
     font-weight: 500;
     line-height: 21px;
+    list-style: none;
     &:hover {
-      color: var(--primary);
+      color: ${theme.colors.primary};
     }
     &.active {
-      color: var(--primary);
+      color: ${theme.colors.primary};
     }
   `;
 
@@ -88,7 +92,7 @@ const Header = () => {
             display: flex;
             align-items: center;
             justify-content: space-around;
-            background: var(--background);
+            background: ${theme.colors.background};
             z-index: 10;
           }
 
@@ -96,7 +100,7 @@ const Header = () => {
             display: flex;
             align-items: center;
             font-size: 25px;
-            color: var(--primary);
+            color: ${theme.colors.primary};
           }
 
           .Header__button {
@@ -112,14 +116,14 @@ const Header = () => {
           }
 
           .Header__button:hover {
-            color: var(--primary);
+            color: ${theme.colors.primary};
           }
 
           .Cart::after {
             content: "${carts.length}";
             font-size: 10px;
-            color: var(--background);
-            background: var(--primary);
+            color: ${theme.colors.background};
+            background: ${theme.colors.primary};
             border-radius: 50%;
             padding: 2px 4px;
             text-align: center;

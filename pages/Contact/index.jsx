@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import {
-  Input, Textarea, Button,
+  Input, Textarea, Button, Typography,
 } from '../../components';
 import { Layout } from '../../containers';
 
@@ -14,7 +14,7 @@ const Contact = () => (
     <div className="contact">
       <img src="assets/img/Contact.jpg" alt="contact us" className="contact__img" />
       <div className="contact__form">
-        <h1>Contact Us</h1>
+        <Typography variant="h1">Contact US</Typography>
         <Input placeholder="Full Name" size="small" type="text" />
         <Input placeholder="E-mail" size="small" type="email" />
         <Textarea size="small" placeholder="Massage" />

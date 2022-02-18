@@ -19,13 +19,6 @@ a {
 * {
   box-sizing: border-box;
 }
-
-:root {
-  --primary: #56B280;
-  --text: #121212;
-  --background: #fafafa;
-}
-
 html, body, div, span, applet, object, iframe, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
 del, dfn, em, img, ins, kbd, q, s, samp,
@@ -71,16 +64,4 @@ table {
 
 *{
   box-sizing: border-box;
-}
-
-h2 {
-  font-size: 26px;
-  font-weight: 700;
-  padding: 5px 0;
-}
-
-h1 {
-  font-size: 48px;
-  font-weight: 700;
-  padding: 5px 0;
 }

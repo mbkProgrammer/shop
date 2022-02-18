@@ -2,7 +2,7 @@
 import { useContext, useState } from 'react';
 import Head from 'next/head';
 import { BsCart3 } from 'react-icons/bs';
-import { Quantity, Button } from '../../components';
+import { Quantity, Button, Typography } from '../../components';
 import PRODUCTS from '../api/Products.json';
 import CartContext from '../../context/CartContext';
 import { Layout } from '../../containers';
@@ -41,8 +41,8 @@ const Products = ({ plan_id }) => {
       <div className="singleProduct">
         <img src={`/${product.img}`} alt={product.name} className="singleProduct__img" />
         <div className="singleProduct__content">
-          <h2>{product.name}</h2>
-          <p className="singleProduct__text">{product.description}</p>
+          <Typography variant="h2">{product.name}</Typography>
+          <Typography variant="body2" css="">{product.description}</Typography>
           <div className="singleProduct__buying">
             <div className="singleProduct__Quantity">
               <Quantity itemNum={itemNum} setItemNum={setItemNum} />
@@ -80,13 +80,6 @@ const Products = ({ plan_id }) => {
 
           .singleProduct__content {
             padding:0 10px;
-          }
-
-          .singleProduct__text {
-            text-align: justify;
-            text-justify: inter-word;
-            font-size: 14px;
-            line-height: 20px;
           }
 
           .singleProduct__buying {
