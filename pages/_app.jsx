@@ -1,13 +1,13 @@
 /* eslint-disable react/jsx-no-constructed-context-values */
-/* eslint-disable react/jsx-props-no-spreading */
-/* eslint-disable react/jsx-filename-extension */
 import '../styles/globals.css';
-import { useReducer, useEffect } from 'react';
+import React, { useReducer, useEffect } from 'react';
 import { jsx, ThemeProvider } from '@emotion/react';
+import { Provider } from 'react-redux';
 import CartContext from '../context/CartContext';
 import CartReducers from '../reducers/Carts';
 import useLocalStorage from '../hooks/useLocalStorage';
 import theme from '../configs/theme';
+import store from '../configs/Store';
 
 function MyApp({ Component, pageProps }) {
   const [cartsStorage, setCartsStorage] = useLocalStorage('cartsStorage');
@@ -32,11 +32,13 @@ function MyApp({ Component, pageProps }) {
   }, []);
 
   return (
-    <ThemeProvider theme={theme}>
-      <CartContext.Provider value={{ carts: state.carts, dispatchCart: dispatch }}>
-        <Component {...pageProps} />
-      </CartContext.Provider>
-    </ThemeProvider>
+    <Provider store={store}>
+      <ThemeProvider theme={theme}>
+        <CartContext.Provider value={{ carts: state.carts, dispatchCart: dispatch }}>
+          <Component {...pageProps} />
+        </CartContext.Provider>
+      </ThemeProvider>
+    </Provider>
   );
 }
 

@@ -7,7 +7,7 @@ const Layout = ({ children }) => {
   return (
     <div className={css`background: ${theme.colors.background}`}>
       <Header />
-      <div className={css`padding-top: 50px;`}>
+      <div className={css`padding-top: 50px; padding-bottom: 60px; position: relative;`}>
         {children}
       </div>
       <Footer />

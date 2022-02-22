@@ -5,7 +5,7 @@ import WINDOW from '../utils/window';
 const useLocalStorage = (key) => {
   const getValue = () => {
     try {
-      const value = window.localStorage.getItem(key);
+      const value = WINDOW.localStorage.getItem(key);
       return JSON.parse(value);
     } catch (error) {
       console.log(

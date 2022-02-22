@@ -42,7 +42,6 @@ const Footer = () => {
             background: ${theme.colors.text};
             max-width: 100vw;
             padding: 3vw 5vh;
-            margin-top: 30px;
           }
           .Footer .Footer__content {
             color: ${theme.colors.secondary};

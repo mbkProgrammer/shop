@@ -4,6 +4,7 @@ const theme = {
     secondary: '#F5FBF8',
     text: '#222322',
     background: '#EAF6F0',
+    error: '#C73E1D',
   },
   typography: {
     body: {

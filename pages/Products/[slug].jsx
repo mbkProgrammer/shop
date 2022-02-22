@@ -2,6 +2,7 @@
 import { useContext, useState } from 'react';
 import Head from 'next/head';
 import { BsCart3 } from 'react-icons/bs';
+import { useTheme } from '@emotion/react';
 import { Quantity, Button, Typography } from '../../components';
 import PRODUCTS from '../api/Products.json';
 import CartContext from '../../context/CartContext';
@@ -14,6 +15,7 @@ const Products = ({ plan_id }) => {
   const added = carts.find((carts) => carts.id === plan_id.slug);
   const product = PRODUCTS.find((item) => item.id === plan_id.slug);
 
+  const theme = useTheme();
   const handleAddToCart = () => {
     if (added) {
       dispatchCart({
@@ -99,11 +101,11 @@ const Products = ({ plan_id }) => {
 
           .singleProduct__price {
             font-size: 36px;
-            color: var(--primary);
+            color: ${theme.colors.primary};
           }
           .singleProduct__price::after{
             content: '  $';
-            color: var(--primary);
+            color: ${theme.colors.primary};
           }
           @media (max-width: 580px){
             .singleProduct {

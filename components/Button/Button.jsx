@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
 
 const Button = ({
-  varaint, children, onClick, size = 'medium',
+  varaint, children, onClick, size, styles,
 }) => {
   const theme = useTheme();
 
@@ -17,13 +17,13 @@ const Button = ({
   border-radius: 5px;
   margin: 5px;
   transition: 0.3s;
+
   &.btn--text {
     color: ${theme.colors.text};
     background: none;
   }
   &.btn--outlined {
     border: 1px solid;
-    background: ${theme.colors.secondary};
   }
   &.btn--outlined:hover {
     border: 1px solid;
@@ -53,6 +53,7 @@ const Button = ({
     padding: 8px 44px;
   }
 
+  ${styles}
   `;
 
   return <Button className={`btn--${varaint} btn--${size} `} onClick={onClick}>{children}</Button>;
@@ -60,11 +61,13 @@ const Button = ({
 Button.propTypes = {
   varaint: PropTypes.oneOf(['text', 'outlined', 'contained']),
   size: PropTypes.oneOf(['small', 'medium', 'big']),
+  styles: PropTypes.string,
 };
 
 Button.defaultProps = {
   varaint: 'text',
   size: 'medium',
+  styles: '',
 };
 
 export default Button;

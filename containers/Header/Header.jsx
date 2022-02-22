@@ -69,13 +69,13 @@ const Header = () => {
       </div>
 
       <Nav className={toggleActive ? 'active' : ''}>
-        <NavItem onClick={() => router.push('/')} className={router.route !== '/About' && router.route !== '/Contact' ? 'active' : ''}>Shop</NavItem>
+        <NavItem onClick={() => router.push('/')} className={router.route === '/' || router.route.includes('/Products') ? 'active' : ''}>Shop</NavItem>
         <NavItem onClick={() => router.push('/About')} className={router.route === '/About' ? 'active' : ''}>About</NavItem>
         <NavItem onClick={() => router.push('/Contact')} className={router.route === '/Contact' ? 'active' : ''}>Contact</NavItem>
       </Nav>
 
       <div>
-        <button type="button" className="Header__button">
+        <button type="button" onClick={() => router.push('/Account')} className={router.route.includes('/Account') ? 'Header__button active' : 'Header__button'}>
           <FaRegUser />
         </button>
         <button type="button" className="Header__button Cart">
@@ -116,6 +116,10 @@ const Header = () => {
           }
 
           .Header__button:hover {
+            color: ${theme.colors.primary};
+          }
+
+          .Header__button.active {
             color: ${theme.colors.primary};
           }
 
