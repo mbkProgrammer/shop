@@ -1,3 +1,4 @@
+/* eslint-disable import/no-unresolved */
 import { useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
@@ -56,7 +57,11 @@ const Button = ({
   ${styles}
   `;
 
-  return <Button className={`btn--${varaint} btn--${size} `} onClick={onClick}>{children}</Button>;
+  return (
+    <Button className={`btn--${varaint} btn--${size} `} onClick={onClick}>
+      {children}
+    </Button>
+  );
 };
 Button.propTypes = {
   varaint: PropTypes.oneOf(['text', 'outlined', 'contained']),

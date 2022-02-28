@@ -1,10 +1,20 @@
 import Head from 'next/head';
-import { css } from '@emotion/react';
+import { css, useTheme } from '@emotion/react';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Card, Layout } from '../containers';
-import PRODUCT from './api/Products.json';
 import { Typography } from '../components';
+import { GET_PRODUCTS_ACTION } from '../actions';
 
-export default function Home() {
+const Home = () => {
+  const theme = useTheme();
+  const dispatch = useDispatch();
+  const { loading, products } = useSelector((state) => state.products);
+
+  useEffect(async () => {
+    await dispatch(GET_PRODUCTS_ACTION());
+  }, []);
+
   return (
     <Layout>
       <Head>
@@ -15,12 +25,15 @@ export default function Home() {
       <div className="shop">
         <div className="Shop__tittle">
           <Typography variant="h2">Products</Typography>
-          <Typography variant="body1">Order it for you or for your beloved ones </Typography>
+          <Typography variant="body1">
+            Order it for you or for your beloved ones
+            {' '}
+          </Typography>
         </div>
 
         <div className="Shop__products">
           {
-            PRODUCT.map((item) => (
+            products && products.map((item) => (
               <Card key={item.id} title={item.name} imageAlt={item.name} imageSrc={item.img} path={`/Products/${item.id}`} price={item.price} />
             ))
           }
@@ -43,8 +56,10 @@ export default function Home() {
             align-items: center;
             flex-wrap: wrap;
           }
-      `}
+        `}
       </style>
     </Layout>
   );
-}
+};
+
+export default Home;

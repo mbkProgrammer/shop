@@ -5,15 +5,14 @@ import { BsCart3 } from 'react-icons/bs';
 import { useRouter } from 'next/router';
 import { useState, useContext, useEffect } from 'react';
 import { useTheme } from '@emotion/react';
-import CartContext from '../../context/CartContext';
+import { useSelector } from 'react-redux';
 import useLocalStorage from '../../hooks/useLocalStorage';
 
 const Header = () => {
   const router = useRouter();
   const [toggleActive, setToggleActive] = useState(false);
   const [cartsStorage, setCartsStorage] = useLocalStorage('cartsStorage');
-  const { carts } = useContext(CartContext);
-
+  const { carts } = useSelector((state) => state.cart);
   const theme = useTheme();
 
   useEffect(() => {

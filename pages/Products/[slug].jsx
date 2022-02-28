@@ -1,30 +1,37 @@
 /* eslint-disable camelcase */
-import { useContext, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Head from 'next/head';
 import { BsCart3 } from 'react-icons/bs';
 import { useTheme } from '@emotion/react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Quantity, Button, Typography } from '../../components';
-import PRODUCTS from '../api/Products.json';
-import CartContext from '../../context/CartContext';
 import { Layout } from '../../containers';
+import { GET_PRODUCTS_ACTION } from '../../actions';
+import actionTypes from '../../configs/actionTypes';
 
 const Products = ({ plan_id }) => {
   const [itemNum, setItemNum] = useState(1);
-  const { carts, dispatchCart } = useContext(CartContext);
+  const dispatch = useDispatch();
+  const { loading, products } = useSelector((state) => state.products);
+  const { carts } = useSelector((state) => state.cart);
 
-  const added = carts.find((carts) => carts.id === plan_id.slug);
-  const product = PRODUCTS.find((item) => item.id === plan_id.slug);
+  useEffect(async () => {
+    await dispatch(GET_PRODUCTS_ACTION());
+  }, []);
+
+  const added = carts && carts.find((cart) => cart.id === plan_id.slug);
+  const product = products && products.find((item) => item.id === plan_id.slug);
 
   const theme = useTheme();
   const handleAddToCart = () => {
     if (added) {
-      dispatchCart({
-        type: 'REMOVE_FROM_CART',
+      dispatch({
+        type: actionTypes.REMOVE_FROM_CART,
         id: plan_id.slug,
       });
     } else {
-      dispatchCart({
-        type: 'ADD_TO_CART',
+      dispatch({
+        type: actionTypes.ADD_TO_CART,
         id: plan_id.slug,
         quantity: itemNum,
       });
@@ -37,18 +44,18 @@ const Products = ({ plan_id }) => {
         <title>
           product:
           {' '}
-          {product.name}
+          {product && product.name}
         </title>
       </Head>
       <div className="singleProduct">
-        <img src={`/${product.img}`} alt={product.name} className="singleProduct__img" />
+        <img src={`/${product && product.img}`} alt={product && product.name} className="singleProduct__img" />
         <div className="singleProduct__content">
-          <Typography variant="h2">{product.name}</Typography>
-          <Typography variant="body2" css="">{product.description}</Typography>
+          <Typography variant="h2">{product && product.name}</Typography>
+          <Typography variant="body2" css="">{product && product.description}</Typography>
           <div className="singleProduct__buying">
             <div className="singleProduct__Quantity">
               <Quantity itemNum={itemNum} setItemNum={setItemNum} />
-              <div className="singleProduct__price">{product.price * itemNum}</div>
+              <div className="singleProduct__price">{product && product.price * itemNum}</div>
             </div>
             {
                 !added ? (
