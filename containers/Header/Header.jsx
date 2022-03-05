@@ -6,18 +6,12 @@ import { useRouter } from 'next/router';
 import { useState, useContext, useEffect } from 'react';
 import { useTheme } from '@emotion/react';
 import { useSelector } from 'react-redux';
-import useLocalStorage from '../../hooks/useLocalStorage';
 
 const Header = () => {
   const router = useRouter();
   const [toggleActive, setToggleActive] = useState(false);
-  const [cartsStorage, setCartsStorage] = useLocalStorage('cartsStorage');
   const { carts } = useSelector((state) => state.cart);
   const theme = useTheme();
-
-  useEffect(() => {
-    setCartsStorage(JSON.stringify(carts));
-  }, [JSON.stringify(carts)]);
 
   const Nav = styled.ul`
     display: flex;
@@ -74,10 +68,10 @@ const Header = () => {
       </Nav>
 
       <div>
-        <button type="button" onClick={() => router.push('/Account')} className={router.route.includes('/Account') ? 'Header__button active' : 'Header__button'}>
+        <button type="button" onClick={() => router.push('/Account')} className={router.route.includes('/Account') && !router.route.includes('/Cart') ? 'Header__button active' : 'Header__button'}>
           <FaRegUser />
         </button>
-        <button type="button" className="Header__button Cart">
+        <button type="button" onClick={() => router.push('/Account/Cart')} className={router.route.includes('/Cart') ? 'Header__button Cart active' : 'Header__button Cart'}>
           <BsCart3 />
         </button>
       </div>

@@ -8,6 +8,7 @@ const initialState = {
 };
 
 const cart = (state = initialState, action) => {
+  let newCarts = state.carts;
   switch (action.type) {
     case actionTypes.ADD_TO_CART:
       return {
@@ -15,19 +16,31 @@ const cart = (state = initialState, action) => {
         carts: [...state.carts, { id: action.id, quantity: action.quantity }],
       };
     case actionTypes.REMOVE_FROM_CART:
-      let newCarts = state.carts;
       const removeIndex = state.carts.findIndex((cartId) => cartId.id === action.id);
       if (removeIndex !== -1) {
         newCarts.splice(removeIndex, 1);
       } else {
-        newCarts = state;
+        newCarts = state.carts;
       }
       return {
-        state,
+        ...state,
         carts: newCarts,
       };
     case actionTypes.UPDATE_CART:
-      return action.carts;
+      return {
+        carts: action.carts,
+      };
+    case actionTypes.UPDATE_QUANTITY_CART:
+      const cartIndex = state.carts.findIndex((cartId) => cartId.id === action.id);
+      if (cartIndex !== -1) {
+        newCarts[cartIndex].quantity = action.quantity;
+      } else {
+        newCarts = state.carts;
+      }
+      return {
+        ...state,
+        carts: newCarts,
+      };
     default:
       return state;
   }

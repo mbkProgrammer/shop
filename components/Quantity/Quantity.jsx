@@ -11,7 +11,7 @@ const Quantity = ({ setItemNum, itemNum }) => {
 
   const Quantity = styled.div`
   width: 75px;
-  height: 61px;
+  height: fit-content;
   display: flex;
   margin: 5px;
   flex-direction: column;
@@ -45,10 +45,7 @@ const Quantity = ({ setItemNum, itemNum }) => {
 
   return (
     <Quantity>
-      <div className={css`height: 50%; color: ${theme.colors.text}`}>
-        Quantity
-      </div>
-      <div className={css`height: 50%; width: 100%; display: flex; justify-content: space-between; align-items: center; border: 1px solid ${theme.colors.primary}; cursor: pointer;`}>
+      <div className={css`height: 100%; width: 100%; display: flex; justify-content: space-between; align-items: center; border: 1px solid ${theme.colors.primary}; cursor: pointer;`}>
         <QuantityBtn type="button" onClick={() => setItemNum(itemNum += 1)}>+</QuantityBtn>
         <div>{itemNum}</div>
         <QuantityBtn type="button" onClick={() => setItemNum(itemNum -= 1)} disabled={itemNum === 1}>-</QuantityBtn>

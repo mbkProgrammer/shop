@@ -6,14 +6,9 @@ import { Card, Layout } from '../containers';
 import { Typography } from '../components';
 import { GET_PRODUCTS_ACTION } from '../actions';
 
-const Home = () => {
+const Home = ({ products }) => {
   const theme = useTheme();
   const dispatch = useDispatch();
-  const { loading, products } = useSelector((state) => state.products);
-
-  useEffect(async () => {
-    await dispatch(GET_PRODUCTS_ACTION());
-  }, []);
 
   return (
     <Layout>
@@ -60,6 +55,14 @@ const Home = () => {
       </style>
     </Layout>
   );
+};
+
+Home.getInitialProps = async ({ reduxStore }) => {
+  await reduxStore.dispatch(GET_PRODUCTS_ACTION());
+  const { products } = reduxStore.getState();
+  return {
+    products: products.products,
+  };
 };
 
 export default Home;

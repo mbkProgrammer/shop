@@ -8,10 +8,7 @@ const useLocalStorage = (key) => {
       const value = WINDOW.localStorage.getItem(key);
       return JSON.parse(value);
     } catch (error) {
-      console.log(
-        `#useLocalStorage: an error occurred loading the localStorage key “${key}”:`,
-        error,
-      );
+      console.log('useLocalStorage error');
     }
   };
   const setValue = (value) => WINDOW.localStorage.setItem(key, value);

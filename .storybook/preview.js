@@ -1,7 +1,8 @@
 import { ThemeProvider } from "@emotion/react";
 import { addDecorator } from "@storybook/react";
 import theme from "../configs/theme";
-import CartContext from "../context/CartContext";
+import store from '../configs/Store';
+import { Provider } from "react-redux";
 import { RouterContext } from "next/dist/shared/lib/router-context";
 
 // export const decorators = [withNextRouter()]
@@ -14,9 +15,9 @@ export const parameters = {
 
 addDecorator((storyFn)=> (
   <ThemeProvider theme={theme}>
-    <CartContext.Provider value={{ carts: [],}}>
+    <Provider store={store}>
     {storyFn()}
-    </CartContext.Provider>
+    </Provider>
   </ThemeProvider>
 ))
 

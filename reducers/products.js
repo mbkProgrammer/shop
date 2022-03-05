@@ -1,7 +1,7 @@
 /* eslint-disable default-param-last */
 import actionTypes from '../configs/actionTypes';
 
-const products = (state = [], action) => {
+const products = (state = {}, action) => {
   switch (action.type) {
     case actionTypes.GET_PRODUCTS_STARTED:
       return {

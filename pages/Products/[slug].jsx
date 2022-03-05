@@ -2,39 +2,46 @@
 import { useEffect, useState } from 'react';
 import Head from 'next/head';
 import { BsCart3 } from 'react-icons/bs';
-import { useTheme } from '@emotion/react';
+import { jsx, useTheme } from '@emotion/react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Quantity, Button, Typography } from '../../components';
 import { Layout } from '../../containers';
-import { GET_PRODUCTS_ACTION } from '../../actions';
-import actionTypes from '../../configs/actionTypes';
+import {
+  ADD_TO_CART_ACTION, GET_PRODUCTS_ACTION, REMOVE_FROM_CART_ACTION, UPDATE_QUANTITY_CART,
+} from '../../actions';
 
-const Products = ({ plan_id }) => {
-  const [itemNum, setItemNum] = useState(1);
+const Products = ({ products, plan_id }) => {
+  const [updateitemNum, setUpdateItemNum] = useState(false);
   const dispatch = useDispatch();
-  const { loading, products } = useSelector((state) => state.products);
   const { carts } = useSelector((state) => state.cart);
+  const added = carts && carts.find((cart) => cart.id === plan_id.slug);
+  const [itemNum, setItemNum] = useState(added ? added.quantity : 1);
+  const product = products && products.find((item) => item.id === plan_id.slug);
 
-  useEffect(async () => {
-    await dispatch(GET_PRODUCTS_ACTION());
+  useEffect(() => {
+    console.log('carts', added);
+    if (!updateitemNum) {
+      if (added) {
+        setItemNum(added.quantity);
+      }
+      setUpdateItemNum(true);
+    }
   }, []);
 
-  const added = carts && carts.find((cart) => cart.id === plan_id.slug);
-  const product = products && products.find((item) => item.id === plan_id.slug);
+  useEffect(() => {
+    if (added) {
+      UPDATE_QUANTITY_CART(dispatch, { id: plan_id, quantity: itemNum });
+      setItemNum(added.quantity);
+      console.log('carts', added);
+    }
+  }, [JSON.stringify(itemNum)]);
 
   const theme = useTheme();
   const handleAddToCart = () => {
     if (added) {
-      dispatch({
-        type: actionTypes.REMOVE_FROM_CART,
-        id: plan_id.slug,
-      });
+      REMOVE_FROM_CART_ACTION(dispatch, { id: plan_id.slug });
     } else {
-      dispatch({
-        type: actionTypes.ADD_TO_CART,
-        id: plan_id.slug,
-        quantity: itemNum,
-      });
+      ADD_TO_CART_ACTION(dispatch, { id: plan_id.slug, quantity: itemNum });
     }
   };
 
@@ -42,8 +49,6 @@ const Products = ({ plan_id }) => {
     <Layout>
       <Head>
         <title>
-          product:
-          {' '}
           {product && product.name}
         </title>
       </Head>
@@ -136,10 +141,13 @@ const Products = ({ plan_id }) => {
   );
 };
 
-export const getServerSideProps = async ({ params }) => {
-  const plan_id = params;
+Products.getInitialProps = async ({ reduxStore, query }) => {
+  await reduxStore.dispatch(GET_PRODUCTS_ACTION());
+  const { products } = reduxStore.getState();
+  const plan_id = query;
   return {
-    props: { plan_id },
+    products: products.products,
+    plan_id,
   };
 };
 

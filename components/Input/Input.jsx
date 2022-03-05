@@ -48,12 +48,8 @@ const Input = ({
         width: 216px;
       }
       @media (max-width: 480px){
-        &.input--big{
-          width: 347px;
-        }
-      @media (max-width: 350px){
-        &.input--big{
-          width: 307px;
+        &.input--big, &.input--small, &.input--medium{
+          width: 100%;
         }
       }
       `}`}

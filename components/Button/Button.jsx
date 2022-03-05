@@ -18,13 +18,19 @@ const Button = ({
   border-radius: 5px;
   margin: 5px;
   transition: 0.3s;
+  background: transparent;
 
   &.btn--text {
-    color: ${theme.colors.text};
     background: none;
+    padding: 0;
+  }
+
+  &.btn--text:hover {
+    text-decoration: underline;
   }
   &.btn--outlined {
     border: 1px solid;
+    background: transparent;
   }
   &.btn--outlined:hover {
     border: 1px solid;
@@ -37,7 +43,7 @@ const Button = ({
     border: 1px solid ${theme.colors.primary};
     color: #fafafa;
   }
-  &.btn--contained:hover, &.btn--text:hover {
+  &.btn--contained:hover,{
     background-image: linear-gradient(rgba(0, 0, 0, 0.2) 0 0);
   }
   &.btn--big {
