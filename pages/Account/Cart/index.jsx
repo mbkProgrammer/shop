@@ -2,15 +2,15 @@
 import { useTheme } from '@emotion/react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import { useDispatch, useSelector } from 'react-redux';
-import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import { css } from '@emotion/css';
-import { Card, Layout } from '../../../containers';
+import { Layout } from '../../../containers';
 import {
   Typography, Space, Button,
 } from '../../../components';
 import { GET_PRODUCTS_ACTION } from '../../../actions';
 import CartCard from '../../../containers/CartCard/CartCard';
+import cart from '../../../reducers/cart';
 
 const Cart = ({ products }) => {
   const theme = useTheme();
@@ -59,7 +59,10 @@ const Cart = ({ products }) => {
           {'  '}
           $
         </Typography>
-        <Button varaint="contained" onClick={() => router.push('/Account/Cart/Delivery')}>Check-out</Button>
+        {
+          carts.length !== 0 ? (<Button varaint="contained" onClick={() => router.push('/Account/Cart/Delivery')}>Check-out</Button>) : ('')
+        }
+
       </div>
 
       <style jsx>

@@ -26,11 +26,11 @@ const SignIn = () => {
   }, [auth.logged]);
 
   // get form value
-  const handleEmailValue = (value) => {
-    setEmail(value);
+  const handleEmailValue = (e) => {
+    setEmail(e.target.value);
   };
-  const handlePasswordValue = (value) => {
-    setPassword(value);
+  const handlePasswordValue = (e) => {
+    setPassword(e.target.value);
   };
 
   //  submit form

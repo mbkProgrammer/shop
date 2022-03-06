@@ -7,15 +7,12 @@ const Input = ({
 }) => {
   const theme = useTheme();
 
-  const handleOnChange = (event) => {
-    onChange(event.target.value);
-  };
   return (
     <>
       <input
         placeholder={placeholder}
         type={type}
-        onChange={handleOnChange}
+        onChange={onChange}
         className={`input--${size} ${error ? 'input--error' : ''} ${css`
       height: 40px;
       margin: 5px;
