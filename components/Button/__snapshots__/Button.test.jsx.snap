@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button smaple 1`] = `
+<button
+  className="btn--text btn--medium  css-zr5tfn"
+>
+  Facebook
+</button>
+`;
+
+exports[`Button smaple contained 1`] = `
+<button
+  className="btn--contained btn--medium  css-zr5tfn"
+>
+  Facebook
+</button>
+`;
