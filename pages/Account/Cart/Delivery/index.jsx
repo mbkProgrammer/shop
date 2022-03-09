@@ -26,9 +26,6 @@ const Delivary = () => {
   useEffect(() => {
     if (carts.length === 0) {
       router.push('/');
-      console.log('carts', carts);
-    } else {
-      console.log('carts', carts);
     }
   }, []);
 

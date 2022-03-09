@@ -19,7 +19,6 @@ const Products = ({ products, plan_id }) => {
   const product = products && products.find((item) => item.id === plan_id.slug);
 
   useEffect(() => {
-    console.log('carts', added);
     if (!updateitemNum) {
       if (added) {
         setItemNum(added.quantity);
@@ -32,7 +31,6 @@ const Products = ({ products, plan_id }) => {
     if (added) {
       UPDATE_QUANTITY_CART(dispatch, { id: plan_id, quantity: itemNum });
       setItemNum(added.quantity);
-      console.log('carts', added);
     }
   }, [JSON.stringify(itemNum)]);
 
