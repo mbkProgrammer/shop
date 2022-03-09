@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 /* eslint-disable react/jsx-no-constructed-context-values */
 import '../styles/globals.css';
 import React, { useEffect, useState } from 'react';
