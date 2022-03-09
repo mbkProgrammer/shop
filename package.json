@@ -32,7 +32,6 @@
   },
   "devDependencies": {
     "@babel/core": "^7.17.2",
-    "@babel/plugin-transform-runtime": "^7.17.0",
     "@babel/preset-react": "^7.16.7",
     "@next/eslint-plugin-next": "^12.1.0",
     "@storybook/addon-actions": "^6.4.19",
