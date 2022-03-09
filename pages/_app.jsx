@@ -9,6 +9,8 @@ import useLocalStorage from '../hooks/useLocalStorage';
 import theme from '../configs/theme';
 import store from '../configs/Store';
 import { UPDATE_CART, GET_PRODUCTS_ACTION } from '../actions';
+import 'core-js/stable';
+import 'regenerator-runtime/runtime';
 
 const AppWrapper = ({ Component, pageProps }) => (
   <Provider store={store}>
