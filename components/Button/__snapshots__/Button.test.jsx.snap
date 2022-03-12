@@ -8,6 +8,14 @@ exports[`Button smaple 1`] = `
 </button>
 `;
 
+exports[`Button smaple big 1`] = `
+<button
+  className="btn--text btn--big  css-zr5tfn"
+>
+  Facebook
+</button>
+`;
+
 exports[`Button smaple contained 1`] = `
 <button
   className="btn--contained btn--medium  css-zr5tfn"

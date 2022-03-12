@@ -20,6 +20,13 @@ test('Button smaple contained', () => {
   const tree = component.toJSON();
   expect(tree).toMatchSnapshot();
 });
+test('Button smaple big', () => {
+  const component = mountWithTheme(
+    <Button size="big">Facebook</Button>,
+  );
+  const tree = component.toJSON();
+  expect(tree).toMatchSnapshot();
+});
 test('Button smaple onClick', () => {
   let variable = 1;
   const { getByText } = render(
