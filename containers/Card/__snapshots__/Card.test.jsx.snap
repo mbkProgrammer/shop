@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Card sample 1`] = `
+<div
+  className="css-cpn2qo"
+  onClick={[Function]}
+>
+  <img
+    alt="test"
+    className="css-coeihp"
+    src=""
+  />
+  <div
+    className="css-1rs1nzp"
+  >
+    <h4
+      className="css-jbfoo9"
+    >
+      test
+    </h4>
+    <h4
+      className="css-4m54hb"
+    >
+      10.0
+    </h4>
+  </div>
+</div>
+`;

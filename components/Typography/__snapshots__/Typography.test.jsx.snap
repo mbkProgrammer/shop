@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Typography smaple 1`] = `
+<h1
+  className="css-xkr7dq"
+>
+  Hi Mbk
+</h1>
+`;
+
+exports[`Typography smaple 2`] = `
+<h2
+  className="css-1484rop"
+>
+  Hi Mbk
+</h2>
+`;
+
+exports[`Typography smaple 3`] = `
+<h3
+  className="css-1bj96s3"
+>
+  Hi Mbk
+</h3>
+`;
+
+exports[`Typography smaple 4`] = `
+<h4
+  className="css-124arhk"
+>
+  Hi Mbk
+</h4>
+`;
+
+exports[`Typography smaple 5`] = `
+<h5
+  className="css-b3i3zq"
+>
+  Hi Mbk
+</h5>
+`;
+
+exports[`Typography smaple 6`] = `
+<h6
+  className="css-kyp4p2"
+>
+  Hi Mbk
+</h6>
+`;
+
+exports[`Typography smaple 7`] = `
+<p
+  className="css-16v1ac2"
+>
+  Hi Mbk
+</p>
+`;
+
+exports[`Typography smaple 8`] = `
+<p
+  className="css-v0dx9j"
+>
+  Hi Mbk
+</p>
+`;

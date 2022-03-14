@@ -2,7 +2,7 @@ import { useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
 
-const Textarea = ({ placeholder, size }) => {
+const Textarea = ({ placeholder, size, onChange }) => {
   const theme = useTheme();
 
   const Textarea = styled.textarea`
@@ -44,7 +44,7 @@ const Textarea = ({ placeholder, size }) => {
   }
   `;
   return (
-    <Textarea className={`input--${size}`} placeholder={placeholder} />
+    <Textarea className={`input--${size}`} placeholder={placeholder} data-testid="Textarea--test" onChange={onChange} />
   );
 };
 

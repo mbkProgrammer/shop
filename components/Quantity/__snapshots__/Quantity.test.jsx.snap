@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Input smaple 1`] = `
+<div
+  className="css-1i6o0lg"
+>
+  <div
+    className="css-1uk9dl5"
+  >
+    <button
+      className="css-hmo6fz"
+      onClick={[Function]}
+      type="button"
+    >
+      +
+    </button>
+    <div />
+    <button
+      className="css-hmo6fz"
+      disabled={false}
+      onClick={[Function]}
+      type="button"
+    >
+      -
+    </button>
+  </div>
+</div>
+`;

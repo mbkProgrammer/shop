@@ -10,6 +10,7 @@ const Input = ({
   return (
     <>
       <input
+        data-testid="input--test"
         placeholder={placeholder}
         type={type}
         onChange={onChange}

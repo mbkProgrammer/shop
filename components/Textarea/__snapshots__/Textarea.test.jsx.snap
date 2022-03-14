@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Textarea smaple 1`] = `
+<textarea
+  className="input--medium css-catwbv"
+  data-testid="Textarea--test"
+  placeholder="Textarea test"
+/>
+`;
+
+exports[`Textarea smaple size big 1`] = `
+<textarea
+  className="input--big css-catwbv"
+  data-testid="Textarea--test"
+  placeholder="Textarea test"
+/>
+`;
+
+exports[`Textarea smaple type password 1`] = `
+<textarea
+  className="input--medium css-catwbv"
+  data-testid="Textarea--test"
+  placeholder="Textarea test"
+/>
+`;
