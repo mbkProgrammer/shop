@@ -5,10 +5,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Card, Layout } from '../containers';
 import { Typography } from '../components';
 import { GET_PRODUCTS_ACTION } from '../actions';
+import GET_AUTH_ACTION from '../actions/auth';
 
 const Home = ({ products }) => {
   const theme = useTheme();
   const dispatch = useDispatch();
+
+  useEffect(() => {
+  }, []);
 
   return (
     <Layout>
@@ -59,6 +63,7 @@ const Home = ({ products }) => {
 
 Home.getInitialProps = async ({ reduxStore }) => {
   await reduxStore.dispatch(GET_PRODUCTS_ACTION());
+  // await reduxStore.dispatch(GET_AUTH_ACTION());
   const { products } = reduxStore.getState();
   return {
     products: products.products,

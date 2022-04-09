@@ -1,14 +1,16 @@
 import actionTypes from '../configs/actionTypes';
 import fetchURL from './fetchURL';
 
-const reduxCall = async (dispatch, { url, method, name }) => {
+const reduxCall = async (dispatch, {
+  url, method, name, body,
+}) => {
   dispatch({
     type: actionTypes[`${name}_STARTED`],
     loading: true,
     logged: true,
   });
   try {
-    const response = await fetchURL({ url, method });
+    const response = await fetchURL({ url, method, body });
     dispatch({
       type: actionTypes[`${name}_SUCCESS`],
       logged: true,
@@ -25,5 +27,4 @@ const reduxCall = async (dispatch, { url, method, name }) => {
     });
   }
 };
-
 export default reduxCall;

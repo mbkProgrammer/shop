@@ -31,7 +31,8 @@ const Input = ({
         border: 2px solid ${theme.colors.primary} ;
       }
       &:hover {
-        background-image: linear-gradient(${theme.colors.background} 0 0);
+        border: 2px solid ${theme.colors.primary} ;
+        background: none;
       }
       &.input--error {
         border: 2px solid ${theme.colors.error} ;

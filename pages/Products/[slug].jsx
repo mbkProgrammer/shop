@@ -9,6 +9,7 @@ import { Layout } from '../../containers';
 import {
   ADD_TO_CART_ACTION, GET_PRODUCTS_ACTION, REMOVE_FROM_CART_ACTION, UPDATE_QUANTITY_CART,
 } from '../../actions';
+import GET_AUTH_ACTION from '../../actions/auth';
 
 const Products = ({ products, plan_id }) => {
   const [updateitemNum, setUpdateItemNum] = useState(false);

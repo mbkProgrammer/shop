@@ -51,10 +51,6 @@ const MyApp = ({ Component, pageProps }) => {
     }
   }, [JSON.stringify(carts)]);
 
-  useEffect(async () => {
-    await dispatch(GET_PRODUCTS_ACTION());
-  }, []);
-
   return (
     <Component {...pageProps} />
   );

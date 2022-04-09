@@ -11,7 +11,7 @@ const Account = () => {
 
   useEffect(() => {
     if (!auth.logged) {
-      router.push('./Account/SignUp');
+      router.push('./Account/Auth');
     }
   }, []);
 
