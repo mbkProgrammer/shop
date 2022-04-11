@@ -7,14 +7,14 @@ const auth = (state = {}, action) => {
       return {
         ...state,
         loading: action.loading,
-        logged: action.logged,
+        logged: false,
       };
     case actionTypes.GET_AUTH_SUCCESS:
       return {
         ...state,
         loading: action.loading,
         response: action.response,
-        logged: action.logged,
+        logged: false,
       };
 
     case actionTypes.GET_AUTH_FAILED:
@@ -26,25 +26,25 @@ const auth = (state = {}, action) => {
       return {
         ...state,
         loading: action.loading,
-        logged: action.logged,
+        logged: false,
       };
     case actionTypes.PUT_AUTH_SUCCESS:
       return {
         ...state,
         loading: action.loading,
         response: action.response,
-        logged: action.logged,
+        logged: false,
       };
     case actionTypes.PUT_AUTH_FAILED:
       return {
         ...state,
         action,
       };
-    // case actionTypes.SET_AUTH_LOGGED:
-    //   return {
-    //     ...state,
-    //     logged: action.logged,
-    //   };
+    case actionTypes.SET_AUTH_LOGGED:
+      return {
+        ...state,
+        logged: true,
+      };
     default:
       return state;
   }

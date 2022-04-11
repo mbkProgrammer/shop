@@ -26,7 +26,6 @@ const Auth = () => {
   const router = useRouter();
 
   useEffect(() => {
-    console.log('auth', auth);
     if (auth.response && auth.response.length !== 0) {
       setAuthType('login');
     } else if (auth.response && auth.response.length === 0) {
@@ -49,7 +48,8 @@ const Auth = () => {
   const SubmitEmail = async (event) => {
     if (event) event.preventDefault();
     if (validateEmail(email)) {
-      dispatch(GET_AUTH_ACTION(email));
+      const body = { email };
+      dispatch(GET_AUTH_ACTION(body));
       setEmailValid(true);
     } else {
       setEmailValid(false);
@@ -58,33 +58,33 @@ const Auth = () => {
 
   //  submit form
   const SubmitAuth = (event) => {
-    // if (event) event.preventDefault();
+    if (event) event.preventDefault();
 
-    // if (validatePassword(password)) {
-    //   setPasswordValid(true);
-    //   switch (authType) {
-    //     case 'signUp':
-    //       dispatch(
-    //         PUT_AUTH_ACTION({
-    //           user_name: name,
-    //           email,
-    //           password,
-    //         }),
-    //       );
-    //       break;
-    //     case 'login':
-    //       if (auth.auth) {
-    //         setPasswordValid(true);
-    //       } else {
-    //         setPasswordValid(false);
-    //       }
-    //       break;
+    if (validatePassword(password)) {
+      setPasswordValid(true);
+      switch (authType) {
+        case 'signUp':
+          dispatch(
+            PUT_AUTH_ACTION({
+              user_name: name,
+              email,
+              password,
+            }),
+          );
+          break;
+        case 'login':
+          if (auth.response.password === password) {
+            setPasswordValid(true);
+          } else {
+            setPasswordValid(false);
+          }
+          break;
 
-    //     default:
-    //   }
-    // } else {
-    //   setPasswordValid(false);
-    // }
+        default:
+      }
+    } else {
+      setPasswordValid(false);
+    }
   };
 
   return (
@@ -103,6 +103,7 @@ const Auth = () => {
               Create Account
             </Typography>
             <Input
+              disabled
               placeholder="E-mail"
               type="email"
               size="big"
