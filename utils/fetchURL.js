@@ -5,6 +5,7 @@ const fetchURL = async ({
     const response = await fetch(url, {
       method,
       body: JSON.stringify(body),
+      redirect: 'follow',
       headers: {
         'Content-Type': 'application/json',
       },
@@ -13,6 +14,7 @@ const fetchURL = async ({
   }
   const response = await fetch(url, {
     method,
+    redirect: 'follow',
   });
   return response.json();
 };

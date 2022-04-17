@@ -32,7 +32,6 @@ const Input = ({
           width: 445px;
           transition: 0.3s;
           background: ${theme.colors.secondary};
-          ${styles}
           &:focus {
             outline: none;
             border: 2px solid ${theme.colors.primary};
@@ -49,12 +48,15 @@ const Input = ({
           }
           &.input--big {
             width: 445px;
+            ${styles}
           }
           &.input--small {
             width: 140px;
+            ${styles}
           }
           &.input--medium {
             width: 216px;
+            ${styles}
           }
           @media (max-width: 480px) {
             &.input--big,

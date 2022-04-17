@@ -18,7 +18,7 @@ const Auth = () => {
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
   const [passwordValid, setPasswordValid] = useState(true);
-  const [authType, setAuthType] = useState('');
+  const [authType, setAuthType] = useState('signUp');
 
   const auth = useSelector((state) => state.auth);
   const dispatch = useDispatch();
@@ -27,7 +27,7 @@ const Auth = () => {
 
   useEffect(() => {
     if (auth.response && auth.response.length !== 0) {
-      setAuthType('login');
+      router.push('/');
     } else if (auth.response && auth.response.length === 0) {
       setAuthType('signUp');
     }
@@ -45,22 +45,11 @@ const Auth = () => {
     setPassword(e.target.value);
   };
 
-  const SubmitEmail = async (event) => {
-    if (event) event.preventDefault();
-    if (validateEmail(email)) {
-      const body = { email };
-      dispatch(GET_AUTH_ACTION(body));
-      setEmailValid(true);
-    } else {
-      setEmailValid(false);
-    }
-  };
-
   //  submit form
   const SubmitAuth = (event) => {
     if (event) event.preventDefault();
 
-    if (validatePassword(password)) {
+    if (validatePassword(password) && validateEmail(email)) {
       setPasswordValid(true);
       switch (authType) {
         case 'signUp':
@@ -73,17 +62,21 @@ const Auth = () => {
           );
           break;
         case 'login':
-          if (auth.response.password === password) {
-            setPasswordValid(true);
-          } else {
-            setPasswordValid(false);
-          }
+          dispatch(
+            GET_AUTH_ACTION(email, password),
+          );
           break;
-
         default:
       }
-    } else {
+    } else if (validatePassword(password)) {
+      setPasswordValid(true);
+      setEmailValid(false);
+    } else if (validateEmail(email)) {
       setPasswordValid(false);
+      setEmailValid(true);
+    } else {
+      setPasswordValid(true);
+      setEmailValid(true);
     }
   };
 
@@ -103,7 +96,6 @@ const Auth = () => {
               Create Account
             </Typography>
             <Input
-              disabled
               placeholder="E-mail"
               type="email"
               size="big"
@@ -136,8 +128,16 @@ const Auth = () => {
             >
               Sign Up
             </Button>
+            <Button
+              varaint="text"
+              size="big"
+              styles="max-width: 100%; width: 445px; margin: 10px; text-align: left; padding: 8px 25px;"
+              onClick={() => setAuthType('login')}
+            >
+              Do you have account: Login
+            </Button>
           </div>
-        ) : authType === 'login' ? (
+        ) : (
           <div className="Auth__form">
             <Typography
               variant="h2"
@@ -175,35 +175,13 @@ const Auth = () => {
             >
               Sign In
             </Button>
-          </div>
-        ) : (
-          <div className="Auth__form">
-            <Typography
-              variant="h2"
-              css={`
-                text-align: center;
-                color: ${theme.colors.primary};
-                padding: 20px 0;
-              `}
-            >
-              Login to mbk
-            </Typography>
-            <Input
-              placeholder="Enter your E-mail"
-              type="email"
-              size="big"
-              styles="background: none; max-width: 100%; color: #fafafa; &::placeholder {color: #fafafa;}"
-              onChange={handleEmailValue}
-              error={!emailValid}
-              errorMassage="E-mail not valid!"
-            />
             <Button
-              varaint="contained"
+              varaint="text"
               size="big"
-              styles="max-width: 100%; width: 445px; margin: 10px;"
-              onClick={SubmitEmail}
+              styles="max-width: 100%; width: 445px; margin: 10px; text-align: left; padding: 8px 25px;"
+              onClick={() => setAuthType('signUp')}
             >
-              Submit
+              Don't have account: signUp
             </Button>
           </div>
         )}
@@ -213,7 +191,7 @@ const Auth = () => {
         {`
           .Auth {
             width: 80vw;
-            height: 50vh;
+            height: fix-content;
             margin: 30px auto;
             display: flex;
             max-width: 100%;

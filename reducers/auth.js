@@ -13,7 +13,7 @@ const auth = (state = {}, action) => {
       return {
         ...state,
         loading: action.loading,
-        response: action.response,
+        response: action.response[0],
         logged: false,
       };
 

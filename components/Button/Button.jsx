@@ -50,17 +50,20 @@ const Button = ({
     padding: 8px 74px;
     min-width: fit-content;
     max-width: 100%;
+    ${styles}
   }
 
   &.btn--small {
     padding: 8px 24px;
+    ${styles}
   }
 
   &.btn--medium {
     padding: 8px 44px;
+    ${styles}
   }
 
-  ${styles}
+
   `;
 
   return (
