@@ -1,4 +1,5 @@
 const theme = {
+  mode: 'light',
   colors: {
     primary: '#18A558',
     secondary: '#F5FBF8',

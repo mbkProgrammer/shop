@@ -7,10 +7,12 @@ import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import { async } from 'regenerator-runtime';
+import { ToastContainer, toast } from 'react-toastify';
 import { Layout } from '../../../containers';
 import { Input, Typography, Button } from '../../../components';
 import { validateEmail, validatePassword } from '../../../utils/validaton';
 import { GET_AUTH_ACTION, PUT_AUTH_ACTION } from '../../../actions';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Auth = () => {
   const [email, setEmail] = useState('');
@@ -55,7 +57,7 @@ const Auth = () => {
         case 'signUp':
           dispatch(
             PUT_AUTH_ACTION({
-              user_name: name,
+              username: name,
               email,
               password,
             }),
@@ -82,6 +84,16 @@ const Auth = () => {
 
   return (
     <Layout>
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
       <div className="Auth">
         {authType === 'signUp' ? (
           <div className="Auth__form">
@@ -185,6 +197,7 @@ const Auth = () => {
             </Button>
           </div>
         )}
+
       </div>
 
       <style jsx>

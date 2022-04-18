@@ -1,4 +1,5 @@
 /* eslint-disable default-param-last */
+import { toast } from 'react-toastify';
 import actionTypes from '../configs/actionTypes';
 
 const auth = (state = {}, action) => {
@@ -10,6 +11,11 @@ const auth = (state = {}, action) => {
         logged: false,
       };
     case actionTypes.GET_AUTH_SUCCESS:
+      if (action.response.length !== 0) {
+        toast.success('You have successfully logged !');
+      } else {
+        toast.error('Data its not true !');
+      }
       return {
         ...state,
         loading: action.loading,
@@ -18,6 +24,7 @@ const auth = (state = {}, action) => {
       };
 
     case actionTypes.GET_AUTH_FAILED:
+
       return {
         ...state,
         action,
@@ -29,21 +36,17 @@ const auth = (state = {}, action) => {
         logged: false,
       };
     case actionTypes.PUT_AUTH_SUCCESS:
+      toast.success('Account succesfully created !');
       return {
         ...state,
         loading: action.loading,
         response: action.response,
-        logged: false,
+        logged: true,
       };
     case actionTypes.PUT_AUTH_FAILED:
       return {
         ...state,
         action,
-      };
-    case actionTypes.SET_AUTH_LOGGED:
-      return {
-        ...state,
-        logged: true,
       };
     default:
       return state;
