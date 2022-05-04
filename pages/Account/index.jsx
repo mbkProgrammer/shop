@@ -3,8 +3,11 @@ import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import Head from 'next/head';
+import Cookies from 'universal-cookie';
 import { Layout } from '../../containers';
 import WINDOW from '../../utils/window';
+import createMyStore from '../../configs/Store';
+import { VALIDATE_ME_ACTION } from '../../actions';
 
 const Account = () => {
   const theme = useTheme();
@@ -12,7 +15,7 @@ const Account = () => {
   const router = useRouter();
 
   useEffect(() => {
-    if (!auth.response || auth.response.length === 0) {
+    if (!auth.response || !auth.response.email) {
       router.push('./Account/Auth');
     }
   }, []);
@@ -30,15 +33,17 @@ const Account = () => {
   );
 };
 
-Account.getInitialProps = async ({ reduxStore }) => {
-  const { auth } = reduxStore.getState();
-  if (!auth.response || auth.response.length === 0) {
-    WINDOW.location = './Account/Auth';
-  }
-
-  return {
-    // auth,
-  };
-};
-
+// Account.getInitialProps = async (appContext) => {
+//   let cookies = {};
+//   if (appContext.req) {
+//     cookies = new Cookies(appContext.req.headers.cookie);
+//   } else {
+//     cookies = new Cookies();
+//   }
+//   if (cookies.get('user')) {
+//     await appContext.reduxStore.dispatch(VALIDATE_ME_ACTION(cookies.get('user')));
+//   }
+//   const { auth } = appContext.reduxStore.getState();
+//   return { auth };
+// };
 export default Account;

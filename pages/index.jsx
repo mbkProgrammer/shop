@@ -8,9 +8,6 @@ import { GET_PRODUCTS_ACTION } from '../actions';
 import GET_AUTH_ACTION from '../actions/auth';
 
 const Home = ({ products }) => {
-  const theme = useTheme();
-  const dispatch = useDispatch();
-
   useEffect(() => {
   }, []);
 

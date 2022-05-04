@@ -15,7 +15,7 @@ const Header = () => {
 
   const Nav = styled.ul`
     display: flex;
-    @media (max-width: 480px){
+    @media (max-width: 480px) {
       display: none;
       flex-direction: column;
       position: absolute;
@@ -46,7 +46,11 @@ const Header = () => {
 
   return (
     <div className="Header">
-      <button type="button" className="Header__button toggler" onClick={() => setToggleActive(!toggleActive)}>
+      <button
+        type="button"
+        className="Header__button toggler"
+        onClick={() => setToggleActive(!toggleActive)}
+      >
         <FaBars />
       </button>
 
@@ -62,16 +66,52 @@ const Header = () => {
       </div>
 
       <Nav className={toggleActive ? 'active' : ''}>
-        <NavItem onClick={() => router.push('/')} className={router.route === '/' || router.route.includes('/Products') ? 'active' : ''}>Shop</NavItem>
-        <NavItem onClick={() => router.push('/About')} className={router.route === '/About' ? 'active' : ''}>About</NavItem>
-        <NavItem onClick={() => router.push('/Contact')} className={router.route === '/Contact' ? 'active' : ''}>Contact</NavItem>
+        <NavItem
+          onClick={() => router.push('/')}
+          className={
+            router.route === '/' || router.route.includes('/Products')
+              ? 'active'
+              : ''
+          }
+        >
+          Shop
+        </NavItem>
+        <NavItem
+          onClick={() => router.push('/About')}
+          className={router.route === '/About' ? 'active' : ''}
+        >
+          About
+        </NavItem>
+        <NavItem
+          onClick={() => router.push('/Contact')}
+          className={router.route === '/Contact' ? 'active' : ''}
+        >
+          Contact
+        </NavItem>
       </Nav>
 
       <div>
-        <button type="button" onClick={() => router.push('/Account')} className={router.route.includes('/Account') && !router.route.includes('/Cart') ? 'Header__button active' : 'Header__button'}>
+        <button
+          type="button"
+          onClick={() => router.replace('/Account')}
+          className={
+            router.route.includes('/Account')
+            && !router.route.includes('Account/Cart')
+              ? 'Header__button active'
+              : 'Header__button'
+          }
+        >
           <FaRegUser />
         </button>
-        <button type="button" onClick={() => router.push('/Account/Cart')} className={router.route.includes('/Cart') ? 'Header__button Cart active' : 'Header__button Cart'}>
+        <button
+          type="button"
+          onClick={() => router.replace('/Account/Cart')}
+          className={
+            router.route.includes('/Cart')
+              ? 'Header__button Cart active'
+              : 'Header__button Cart'
+          }
+        >
           <BsCart3 />
         </button>
       </div>
@@ -133,7 +173,7 @@ const Header = () => {
             display: none;
           }
 
-          @media (max-width: 480px){
+          @media (max-width: 480px) {
             .Header {
               justify-content: space-between;
             }

@@ -8,10 +8,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import { async } from 'regenerator-runtime';
 import { ToastContainer, toast } from 'react-toastify';
+import Cookies from 'universal-cookie';
 import { Layout } from '../../../containers';
 import { Input, Typography, Button } from '../../../components';
 import { validateEmail, validatePassword } from '../../../utils/validaton';
-import { GET_AUTH_ACTION, PUT_AUTH_ACTION } from '../../../actions';
+import { GET_AUTH_ACTION, PUT_AUTH_ACTION, VALIDATE_ME_ACTION } from '../../../actions';
 import 'react-toastify/dist/ReactToastify.css';
 
 const Auth = () => {
@@ -28,10 +29,8 @@ const Auth = () => {
   const router = useRouter();
 
   useEffect(() => {
-    if (auth.response && auth.response.length !== 0) {
+    if (auth.response && auth.response.email) {
       router.push('/');
-    } else if (auth.response && auth.response.length === 0) {
-      setAuthType('signUp');
     }
   }, [auth, auth.response]);
 
@@ -84,16 +83,7 @@ const Auth = () => {
 
   return (
     <Layout>
-      <ToastContainer
-        position="top-center"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-      />
+
       <div className="Auth">
         {authType === 'signUp' ? (
           <div className="Auth__form">
@@ -206,6 +196,7 @@ const Auth = () => {
             width: 80vw;
             height: fix-content;
             margin: 30px auto;
+            padding: 10px;
             display: flex;
             max-width: 100%;
             justify-content: center;
@@ -220,7 +211,10 @@ const Auth = () => {
             margin: 10px;
             display: flex;
             flex-direction: column;
-            background: rgba(1, 1, 1, 0.5);
+            background: rgba(60, 60, 60, 0.5);
+            border-radius: 8px;
+            box-shadow: 0 0 10 rgba(0, 0, 0, 0.25);
+            backdrop-filter: blur(5px);
             align-items: center;
             position: relative;
           }
@@ -241,4 +235,17 @@ const Auth = () => {
   );
 };
 
+// Auth.getInitialProps = async (appContext) => {
+//   let cookies = {};
+//   if (appContext.req) {
+//     cookies = new Cookies(appContext.req.headers.cookie);
+//   } else {
+//     cookies = new Cookies();
+//   }
+//   if (cookies.get('user')) {
+//     await appContext.reduxStore.dispatch(VALIDATE_ME_ACTION(cookies.get('user')));
+//   }
+//   const { auth } = appContext.reduxStore.getState();
+//   return { auth };
+// };
 export default Auth;

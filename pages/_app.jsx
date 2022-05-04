@@ -5,12 +5,15 @@ import React, { useEffect, useState } from 'react';
 import { jsx, ThemeProvider } from '@emotion/react';
 import { Provider, useDispatch, useSelector } from 'react-redux';
 import App from 'next/app';
+import Cookies from 'universal-cookie';
 import useLocalStorage from '../hooks/useLocalStorage';
 import theme from '../configs/theme';
-import store from '../configs/Store';
-import { UPDATE_CART, GET_PRODUCTS_ACTION } from '../actions';
+import createMyStore from '../configs/Store';
+import { UPDATE_CART, GET_PRODUCTS_ACTION, VALIDATE_ME_ACTION } from '../actions';
 import 'core-js/stable';
 import 'regenerator-runtime/runtime';
+
+const store = createMyStore();
 
 const AppWrapper = ({ Component, pageProps }) => (
   <Provider store={store}>
@@ -43,6 +46,13 @@ const MyApp = ({ Component, pageProps }) => {
       UPDATE_CART(dispatch, { carts: [] });
     }
     setCartsInStorage(true);
+  }, []);
+
+  useEffect(() => {
+    const cookies = new Cookies();
+    if (cookies.get('user')) {
+      dispatch(VALIDATE_ME_ACTION(cookies.get('user')));
+    }
   }, []);
 
   useEffect(() => {
