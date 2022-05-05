@@ -6,7 +6,9 @@ import {
   UPDATE_QUANTITY_CART,
 } from './carts';
 import { ADD_ORDERS_ACTION, SET_ORDERS_PAYMENT_ACTION } from './orders';
-import { PUT_AUTH_ACTION, GET_AUTH_ACTION, VALIDATE_ME_ACTION } from './auth';
+import {
+  PUT_AUTH_ACTION, GET_AUTH_ACTION, VALIDATE_ME_ACTION, LOG_OUT_ACTION,
+} from './auth';
 
 export {
   GET_PRODUCTS_ACTION,
@@ -19,4 +21,5 @@ export {
   PUT_AUTH_ACTION,
   GET_AUTH_ACTION,
   VALIDATE_ME_ACTION,
+  LOG_OUT_ACTION,
 };

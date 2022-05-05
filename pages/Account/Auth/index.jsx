@@ -30,7 +30,7 @@ const Auth = () => {
 
   useEffect(() => {
     if (auth.response && auth.response.email) {
-      router.push('/');
+      router.push('/Account');
     }
   }, [auth, auth.response]);
 
@@ -234,18 +234,4 @@ const Auth = () => {
     </Layout>
   );
 };
-
-// Auth.getInitialProps = async (appContext) => {
-//   let cookies = {};
-//   if (appContext.req) {
-//     cookies = new Cookies(appContext.req.headers.cookie);
-//   } else {
-//     cookies = new Cookies();
-//   }
-//   if (cookies.get('user')) {
-//     await appContext.reduxStore.dispatch(VALIDATE_ME_ACTION(cookies.get('user')));
-//   }
-//   const { auth } = appContext.reduxStore.getState();
-//   return { auth };
-// };
 export default Auth;

@@ -13,7 +13,7 @@ const auth = (state = {}, action) => {
         logged: false,
       };
     case actionTypes.GET_AUTH_SUCCESS:
-      if (action.response.length !== 0) {
+      if (action.response[0].length !== 0 && action.response[0].email) {
         cookies.remove('user');
         cookies.set('user', JSON.stringify(action.response.access_token), { path: '/' });
         toast.success('You have successfully logged !');
@@ -63,7 +63,6 @@ const auth = (state = {}, action) => {
         logged: false,
       };
     case actionTypes.VALIDATE_ME_SUCCESS:
-      console.log('action.response :>> ', action.response);
       if (action.response[0].email) {
         return {
           ...state,
@@ -82,6 +81,14 @@ const auth = (state = {}, action) => {
       return {
         ...state,
         action,
+      };
+    case actionTypes.LOG_OUT:
+      cookies.remove('user');
+      return {
+        ...state,
+        loading: false,
+        response: {},
+        logged: false,
       };
     default:
       return state;

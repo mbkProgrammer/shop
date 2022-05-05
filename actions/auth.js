@@ -17,5 +17,12 @@ const VALIDATE_ME_ACTION = (token) => async (dispatch) => reduxCall(dispatch, {
   method: 'GET',
   name: 'VALIDATE_ME',
 });
+const LOG_OUT_ACTION = (dispatch) => {
+  dispatch({
+    type: actionTypes.LOG_OUT,
+  });
+};
 
-export { GET_AUTH_ACTION, PUT_AUTH_ACTION, VALIDATE_ME_ACTION };
+export {
+  GET_AUTH_ACTION, PUT_AUTH_ACTION, VALIDATE_ME_ACTION, LOG_OUT_ACTION,
+};
