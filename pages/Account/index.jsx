@@ -15,7 +15,7 @@ const Account = () => {
 
   useEffect(() => {
     if (!auth.response || !auth.response.email) {
-      router.push('./Account/Auth');
+      router.replace('./Account/Auth');
     }
   }, [auth, auth.response]);
 

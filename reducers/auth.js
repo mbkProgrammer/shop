@@ -71,6 +71,7 @@ const auth = (state = {}, action) => {
           logged: false,
         };
       }
+      cookies.remove('user');
       return {
         ...state,
         loading: action.loading,
@@ -78,6 +79,7 @@ const auth = (state = {}, action) => {
         logged: false,
       };
     case actionTypes.VALIDATE_ME_FAILED:
+      cookies.remove('user');
       return {
         ...state,
         action,

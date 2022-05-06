@@ -8,12 +8,10 @@ import App from 'next/app';
 import Cookies from 'universal-cookie';
 import useLocalStorage from '../hooks/useLocalStorage';
 import theme from '../configs/theme';
-import createMyStore from '../configs/Store';
+import store from '../configs/Store';
 import { UPDATE_CART, GET_PRODUCTS_ACTION, VALIDATE_ME_ACTION } from '../actions';
 import 'core-js/stable';
 import 'regenerator-runtime/runtime';
-
-const store = createMyStore();
 
 const AppWrapper = ({ Component, pageProps }) => (
   <Provider store={store}>
