@@ -15,7 +15,7 @@ const Header = () => {
 
   const Nav = styled.ul`
     display: flex;
-    @media (max-width: 480px) {
+    @media (max-width: 530px) {
       display: none;
       flex-direction: column;
       position: absolute;
@@ -81,6 +81,12 @@ const Header = () => {
           className={router.route === '/About' ? 'active' : ''}
         >
           About
+        </NavItem>
+        <NavItem
+          onClick={() => router.push('/Blog')}
+          className={router.route === '/Blog' ? 'active' : ''}
+        >
+          Blog
         </NavItem>
         <NavItem
           onClick={() => router.push('/Contact')}
@@ -173,7 +179,7 @@ const Header = () => {
             display: none;
           }
 
-          @media (max-width: 480px) {
+          @media (max-width: 530px) {
             .Header {
               justify-content: space-between;
             }

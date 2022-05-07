@@ -6,18 +6,32 @@ import { jsx, ThemeProvider } from '@emotion/react';
 import { Provider, useDispatch, useSelector } from 'react-redux';
 import App from 'next/app';
 import Cookies from 'universal-cookie';
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  useQuery,
+  gql,
+} from '@apollo/client';
 import useLocalStorage from '../hooks/useLocalStorage';
 import theme from '../configs/theme';
 import store from '../configs/Store';
-import { UPDATE_CART, GET_PRODUCTS_ACTION, VALIDATE_ME_ACTION } from '../actions';
+import { UPDATE_CART, VALIDATE_ME_ACTION } from '../actions';
 import 'core-js/stable';
 import 'regenerator-runtime/runtime';
 
+const client = new ApolloClient({
+  uri: 'https://fakeql.com/graphql/02d48ac3093b9dd5b12dcf745e4affd3',
+  cache: new InMemoryCache(),
+});
+
 const AppWrapper = ({ Component, pageProps }) => (
   <Provider store={store}>
-    <ThemeProvider theme={theme}>
-      <MyApp Component={Component} pageProps={pageProps} />
-    </ThemeProvider>
+    <ApolloProvider client={client}>
+      <ThemeProvider theme={theme}>
+        <MyApp Component={Component} pageProps={pageProps} />
+      </ThemeProvider>
+    </ApolloProvider>
   </Provider>
 );
 

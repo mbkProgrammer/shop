@@ -4,8 +4,6 @@ import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import Head from 'next/head';
 import { Layout } from '../../containers';
-import { Button } from '../../components';
-import { LOG_OUT_ACTION } from '../../actions';
 
 const Admin = () => {
   const theme = useTheme();
