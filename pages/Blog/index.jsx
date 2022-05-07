@@ -1,10 +1,20 @@
 import { useTheme } from '@emotion/react';
 import Head from 'next/head';
-import { useQuery } from '@apollo/client';
+import { useQuery, gql } from '@apollo/client';
 import { useEffect } from 'react';
 import { Layout, Post } from '../../containers';
 import { Space, Typography } from '../../components';
-import POSTS_QUERY from './Posts.query';
+
+const POSTS_QUERY = gql`
+  query GetDogs {
+    posts {
+      id
+      title
+      date
+      body
+    }
+  }
+`;
 
 const Blog = () => {
   const theme = useTheme();
