@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import Head from 'next/head';
-import { Layout } from '../../containers';
+import { AdminLayout, Layout } from '../../containers';
 
 const Admin = () => {
   const theme = useTheme();
@@ -21,6 +21,9 @@ const Admin = () => {
           {auth.response && auth.response.username}
         </title>
       </Head>
+      <AdminLayout>
+        post
+      </AdminLayout>
     </Layout>
   );
 };

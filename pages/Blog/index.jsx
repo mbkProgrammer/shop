@@ -6,13 +6,13 @@ import { Layout, Post } from '../../containers';
 import { Space, Typography } from '../../components';
 
 const POSTS_QUERY = gql`
-  query GetDogs {
-    posts {
-      id
-      title
-      date
-      body
-    }
+  query GetPost {
+      posts(sort: "date", dir: "desc") {
+        id
+        date
+        title
+        body
+      }
   }
 `;
 
@@ -21,7 +21,7 @@ const Blog = () => {
 
   const { loading, error, data } = useQuery(POSTS_QUERY);
 
-  const posts = data && [].concat(data.posts).reverse();
+  const posts = data && data.posts;
 
   return (
     <Layout>
@@ -40,7 +40,7 @@ const Blog = () => {
               id={post.id}
               title={post.title}
               body={post.body}
-              date={post.date}
+              date={1652067678821}
             />
           ))}
         </div>

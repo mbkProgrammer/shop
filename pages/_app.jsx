@@ -21,7 +21,7 @@ import 'core-js/stable';
 import 'regenerator-runtime/runtime';
 
 const client = new ApolloClient({
-  uri: 'https://fakeql.com/graphql/02d48ac3093b9dd5b12dcf745e4affd3',
+  uri: 'https://fakeql.com/graphql/c5f5a43e2e962ddc7f72be2b8de6687c',
   cache: new InMemoryCache(),
 });
 

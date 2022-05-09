@@ -4,3 +4,6 @@ export { default as Layout } from './Layout/Layout';
 export { default as Header } from './Header/Header';
 export { default as Footer } from './Footer/Footer';
 export { default as Post } from './Post/Post';
+export { default as AdminMenu } from './AdminMenu/AdminMenu';
+export { default as AdminLayout } from './AdminLayout/AdminLayout';
+export { default as AddPost } from './AddPost/AddPost';

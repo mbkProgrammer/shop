@@ -84,7 +84,7 @@ const Header = () => {
         </NavItem>
         <NavItem
           onClick={() => router.push('/Blog')}
-          className={router.route === '/Blog' ? 'active' : ''}
+          className={router.route.includes('/Blog') ? 'active' : ''}
         >
           Blog
         </NavItem>

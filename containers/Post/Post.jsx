@@ -2,27 +2,32 @@ import { useTheme } from '@emotion/react';
 import { useState } from 'react';
 import { BsFillArrowRightSquareFill } from 'react-icons/bs';
 import { format } from 'date-fns';
+import { useRouter } from 'next/router';
 import { Typography } from '../../components';
 
 const Post = ({
-  id = 1, title = 'some text', body = 'some text', date = '1651884806',
+  id = 1,
+  title = 'some text',
+  body = 'some text',
+  date = '1651884806',
 }) => {
   const theme = useTheme();
+  const router = useRouter();
   const length = 52;
   let newTitle = title;
 
   if (window && document.body.offsetWidth < 600) {
-    newTitle = title.length > length
-      ? `${title.substring(0, length - 3)} ...`
-      : title;
+    newTitle = title.length > length ? `${title.substring(0, length - 3)} ...` : title;
   }
   // console.log('format(date', format(date, 'yyyy-MM-dd'));
   return (
-    <div className="Post">
+    <div className="Post" onClick={() => router.push(`Blog/${id}`)}>
       <Typography variant="h6" css="color: inherit;">
         {newTitle}
       </Typography>
-      <div className="Post--click"><BsFillArrowRightSquareFill /></div>
+      <div className="Post--click">
+        <BsFillArrowRightSquareFill />
+      </div>
       <div className="Post__date">{format(+date, 'yyyy-MM-dd')}</div>
 
       <style>
@@ -74,7 +79,6 @@ const Post = ({
         }
       `}
       </style>
-
     </div>
   );
 };
