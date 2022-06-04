@@ -11,7 +11,19 @@ const Header = () => {
   const router = useRouter();
   const [toggleActive, setToggleActive] = useState(false);
   const { carts } = useSelector((state) => state.cart);
+  const auth = useSelector((state) => state.auth);
   const theme = useTheme();
+
+  const accountClick = () => {
+    if (!auth.response || !auth.response.email) {
+      router.replace('./Account/Auth');
+    } else if (auth.response.type === 'user') {
+      router.replace('./Account');
+    } else {
+      router.replace('./Account');
+    }
+    console.log('auth', auth);
+  };
 
   const Nav = styled.ul`
     display: flex;
@@ -99,10 +111,10 @@ const Header = () => {
       <div>
         <button
           type="button"
-          onClick={() => router.replace('/Account')}
+          onClick={accountClick}
           className={
-            router.route.includes('/Account')
-            && !router.route.includes('Account/Cart')
+            (router.route.includes('/Account')
+            && !router.route.includes('Account/Cart')) || router.route.includes('Admin')
               ? 'Header__button active'
               : 'Header__button'
           }

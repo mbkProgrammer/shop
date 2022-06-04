@@ -16,8 +16,10 @@ const Account = () => {
   useEffect(() => {
     if (!auth.response || !auth.response.email) {
       router.replace('./Account/Auth');
+    } else if (auth.response.type !== 'user') {
+      router.replace('./Admin');
     }
-  }, [auth, auth.response]);
+  }, [auth, auth.response, router]);
 
   return (
     <Layout>

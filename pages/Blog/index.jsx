@@ -40,7 +40,7 @@ const Blog = () => {
               id={post.id}
               title={post.title}
               body={post.body}
-              date={1652067678821}
+              date={post.date}
             />
           ))}
         </div>

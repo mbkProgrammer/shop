@@ -58,7 +58,7 @@ const BlogPost = ({ planId }) => {
             </Typography>
             <Space />
             <Typography variant="body1">
-              {format(1652067678821, 'yyyy-MM-dd')}
+              {data && format(+data.post.date, 'yyyy-MM-dd')}
             </Typography>
             <Space />
           </>

@@ -7,3 +7,4 @@ export { default as Post } from './Post/Post';
 export { default as AdminMenu } from './AdminMenu/AdminMenu';
 export { default as AdminLayout } from './AdminLayout/AdminLayout';
 export { default as AddPost } from './AddPost/AddPost';
+export { default as AddProducts } from './AddProducts/AddProducts';

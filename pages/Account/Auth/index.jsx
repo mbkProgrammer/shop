@@ -30,9 +30,13 @@ const Auth = () => {
 
   useEffect(() => {
     if (auth.response && auth.response.email) {
-      router.push('/Account');
+      if (auth.response.type === 'user') {
+        router.replace('./');
+      } else {
+        router.replace('../Admin');
+      }
     }
-  }, [auth, auth.response]);
+  }, [auth, auth.response, router]);
 
   // get form value
   const handleEmailValue = (e) => {
@@ -107,7 +111,7 @@ const Auth = () => {
               errorMassage="E-mail not valid!"
             />
             <Input
-              placeholder="Name"
+              placeholder="Username"
               type="text"
               size="big"
               styles="background: none; max-width: 100%; color: #fafafa; &::placeholder {color: #fafafa;}"

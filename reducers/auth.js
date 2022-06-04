@@ -15,7 +15,7 @@ const auth = (state = {}, action) => {
     case actionTypes.GET_AUTH_SUCCESS:
       if (action.response[0].length !== 0 && action.response[0].email) {
         cookies.remove('user');
-        cookies.set('user', JSON.stringify(action.response.access_token), { path: '/' });
+        cookies.set('user', JSON.stringify(action.response[0].access_token), { path: '/' });
         toast.success('You have successfully logged !');
       } else {
         toast.error('Data its not true !');

@@ -1,6 +1,6 @@
 import { useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
-import { BsPower } from 'react-icons/bs';
+import { BsPower, BsShop } from 'react-icons/bs';
 import { useDispatch } from 'react-redux';
 import { SiMicrodotblog } from 'react-icons/si';
 import { useRouter } from 'next/router';
@@ -87,12 +87,20 @@ const AdminMenu = () => {
         </MenuToggleIcon>
       </MenuBtn>
       <MenuBtn
+        onClick={() => router.push('/Admin')}
+        className={router.route === '/Admin' ? 'active' : ''}
+      >
+        <MenuBtnIcon><BsShop /></MenuBtnIcon>
+        <MenuBtnText>Products</MenuBtnText>
+      </MenuBtn>
+      <MenuBtn
         onClick={() => router.push('/Admin/Blog')}
         className={router.route === '/Admin/Blog' ? 'active' : ''}
       >
         <MenuBtnIcon><SiMicrodotblog /></MenuBtnIcon>
         <MenuBtnText>Blog</MenuBtnText>
       </MenuBtn>
+
       <MenuBtn className="error" onClick={() => LOG_OUT_ACTION(dispatch)}>
         <MenuBtnIcon><BsPower /></MenuBtnIcon>
         <MenuBtnText>Log Out</MenuBtnText>
@@ -104,12 +112,15 @@ const AdminMenu = () => {
             z-index: 10;
             width: 10rem;
             display: flex;
+            position: fixed;
             flex-direction: column;
             align-items: flex-start;
             border-top: 1px solid ${theme.colors.primary};
             margin: 5px;
             overflow: hidden;
             transition: 0.5s;
+            width: 18rem;
+            left: 0;
           }
 
           @media (max-width: 560px) {

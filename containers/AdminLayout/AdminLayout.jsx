@@ -8,15 +8,21 @@ const AdminLayout = ({ children }) => {
   return (
     <div className="AdminLayout">
       <AdminMenu />
-      <div>
+      <div className="AdminLayout__container">
         {children}
       </div>
 
       <style jsx>
         {`
-        display: flex;
-        max-width: 100vw;
-        overflow: hidden;
+        .AdminLayout {
+          display: flex;
+          max-width: 100vw;
+          overflow: hidden;
+        }
+        .AdminLayout__container {
+          margin-left: 20px;
+          margin-bottom: 40px;
+        }
       `}
       </style>
     </div>

@@ -1,17 +1,10 @@
 # responsive shop
 ## Getting Started
-bayad nodeJS ro nasb konid
-ebteda ba terminal wared project beshavid
-sepas ba code zir node-module haro nasb mickonim
-npm i;
-baraye ejra kardan project :
-npm run dev
-baraye vared shodan be panel admin be address "/Admin" beravid
-
-noskhe build shode project : [https://plant-shop-three.vercel.app/](build version)
-
 
 First, run the development server:
+
+first api
+https://621a25d381d4074e85ba9ca0.mockapi.io/users
 
 ```bash
 npm run dev

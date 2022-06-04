@@ -22,12 +22,24 @@ const POSTS_QUERY = gql`
 
 const Admin = () => {
   const [showPost, setShowPost] = useState(false);
+  const router = useRouter();
   const theme = useTheme();
   const auth = useSelector((state) => state.auth);
-  const { loading, error, data } = useQuery(POSTS_QUERY);
+  const {
+    loading, error, data, refetch,
+  } = useQuery(POSTS_QUERY);
 
   useEffect(() => {
-  }, [auth, auth.response]);
+    if (!auth.response || !auth.response.email) {
+      router.replace('../Account/Auth');
+    } else if (auth.response.type === 'user') {
+      router.replace('../Account');
+    }
+  }, [auth, auth.response, router]);
+
+  useEffect(() => {
+    refetch();
+  }, [showPost]);
 
   return (
     <Layout>
@@ -39,7 +51,7 @@ const Admin = () => {
         </title>
       </Head>
       <AdminLayout>
-        <AddPost show={showPost} setShow={setShowPost} />
+        <AddPost show={showPost} setShow={setShowPost} refetch={refetch} />
         <div className="Blog__posts">
           <Button varaint="contained" onClick={() => setShowPost(true)}>Add Post</Button>
           {data && data.posts.map((post) => (
@@ -48,7 +60,7 @@ const Admin = () => {
               id={post.id}
               title={post.title}
               body={post.body}
-              date={1652067678821}
+              date={post.date}
             />
           ))}
         </div>
