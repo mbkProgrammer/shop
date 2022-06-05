@@ -1,6 +1,6 @@
 {
   "Post": {
-    "title": { "loremSentences": { "minLength": 100, "maxLength": 200 } },
+    "title": { "loremSentences": { "minLength": 30, "maxLength": 100 } },
     "body": { "loremParagraphs": { "minLength": 200, "maxLength": 500 }}
   }
 }
