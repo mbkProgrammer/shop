@@ -1,5 +1,6 @@
 {
   "Post": {
-    "title": { "string": {} }
+    "title": { "string": {} },
+    "loremParagraphs": { "minLength": 200, "maxLength": 500 }
   }
 }
