@@ -1,6 +1,7 @@
 {
   "Post": {
     "title": { "loremSentences": { "minLength": 20, "maxLength": 60 } },
-    "body": { "loremParagraphs": { "minLength": 200, "maxLength": 500 }}
+    "body": { "loremParagraphs": { "minLength": 200, "maxLength": 500 }},
+    "date": { "int": { "min": 1621803182356, "max": 1654432631370 } } }
   }
 }
