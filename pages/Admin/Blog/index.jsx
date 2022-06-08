@@ -11,7 +11,7 @@ import { Button } from '../../../components';
 
 const POSTS_QUERY = gql`
   query GetPost {
-      posts(sort: "date", dir: "desc") {
+    posts(sort: "date", dir: "desc") {
         id
         date
         title

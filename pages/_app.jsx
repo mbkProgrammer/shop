@@ -18,7 +18,6 @@ import theme from '../configs/theme';
 import store from '../configs/Store';
 import { UPDATE_CART, VALIDATE_ME_ACTION } from '../actions';
 import 'core-js/stable';
-import 'regenerator-runtime/runtime';
 
 const client = new ApolloClient({
   uri: 'https://fakeql.com/graphql/e29dfe448adc6b6510e99a78e6e322df',
