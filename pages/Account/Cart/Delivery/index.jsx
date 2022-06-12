@@ -6,7 +6,8 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Stepper from 'react-stepper-horizontal/lib/Stepper';
-import { ADD_ORDERS_ACTION } from '../../../../actions';
+import { async } from 'regenerator-runtime';
+import { ADD_ORDERS_ACTION, GET_ORDERS_ACTION } from '../../../../actions';
 import {
   Button,
   Input,
@@ -20,6 +21,7 @@ const Delivary = () => {
   const router = useRouter();
   const dispatch = useDispatch();
   const { carts } = useSelector((state) => state.cart);
+  const { auth } = useSelector((state) => state);
   const [delivaryInfo, setDelivaryInfo] = useState({});
   const [delivaryInfoError, setDelivaryInfoError] = useState(false);
 
@@ -36,24 +38,15 @@ const Delivary = () => {
     });
   };
 
-  const handleSubmit = () => {
-    if (
-      delivaryInfo.name
-      && delivaryInfo.name.length !== 0
-      && delivaryInfo.address
-      && delivaryInfo.address.length !== 0
-      && delivaryInfo.city
-      && delivaryInfo.city.length !== 0
-      && delivaryInfo.postalCode
-      && delivaryInfo.postalCode.length !== 0
-      && delivaryInfo.province
-      && delivaryInfo.province.length !== 0
-    ) {
-      ADD_ORDERS_ACTION(dispatch, { carts, delivary: delivaryInfo });
-      router.push('/Account/Cart/Delivery/Payment');
-    } else {
-      setDelivaryInfoError(true);
-    }
+  const handleSubmit = (e) => {
+    if (e) e.preventDefault();
+    dispatch(
+      ADD_ORDERS_ACTION(auth.response.id, {
+        order: carts,
+        address: delivaryInfo,
+      }),
+    );
+    router.push('/Account/Cart/Delivery/Payment');
   };
 
   return (
@@ -94,7 +87,7 @@ const Delivary = () => {
 
       <Space />
       <Space />
-      <div className="Delivary">
+      <form className="Delivary" onSubmit={handleSubmit}>
         <Typography variant="h4">Shipping Address</Typography>
         <Space />
         <div className="Delivary__form">
@@ -105,6 +98,7 @@ const Delivary = () => {
             size="medium"
             placeholder="Name"
             onChange={() => handleOnChange('name', event)}
+            required
           />
           <Input
             size="medium"
@@ -115,6 +109,7 @@ const Delivary = () => {
             size="big"
             placeholder="Address and number"
             onChange={() => handleOnChange('address', event)}
+            required
           />
           <Textarea
             placeholder="Shipping Note(optional)"
@@ -125,16 +120,19 @@ const Delivary = () => {
             size="small"
             placeholder="City"
             onChange={() => handleOnChange('city', event)}
+            required
           />
           <Input
             size="small"
             placeholder="Postal Code"
             onChange={() => handleOnChange('postalCode', event)}
+            required
           />
           <Input
             size="small"
             placeholder="Province"
             onChange={() => handleOnChange('province', event)}
+            required
           />
         </div>
         <Space />
@@ -155,15 +153,15 @@ const Delivary = () => {
             Back to Cart
           </Button>
           <Button
-            onClick={handleSubmit}
             varaint="contained"
             size="small"
             styles="width: auto; margin: 10px 20px;"
+            type="submit"
           >
             Go to Payment
           </Button>
         </div>
-      </div>
+      </form>
 
       <style jsx>
         {`

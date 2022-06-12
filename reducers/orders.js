@@ -1,24 +1,40 @@
 /* eslint-disable default-param-last */
+import { useDispatch } from 'react-redux';
+import { GET_ORDERS_ACTION } from '../actions/orders';
 import actionTypes from '../configs/actionTypes';
 
-const initialState = {
-  carts: [],
-  delivary: {},
-};
-
-const orders = (state = initialState, action) => {
+const orders = (state = {}, action) => {
   switch (action.type) {
-    case actionTypes.ADD_ORDERS:
+    case actionTypes.GET_ORDERS_STARTED:
       return {
         ...state,
-        carts: action.carts,
-        delivary: action.delivary,
-        payment: false,
+        loading: action.loading,
       };
-    case actionTypes.SET_ORDERS_PAYMENT:
+    case actionTypes.GET_ORDERS_SUCCESS:
       return {
         ...state,
-        payment: action.payment,
+        loading: action.loading,
+        response: action.response,
+      };
+    case actionTypes.GET_ORDERS_FAILED:
+      return {
+        ...state,
+        action,
+      };
+    case actionTypes.ADD_ORDERS_STARTED:
+      return {
+        ...state,
+        loading: action.loading,
+      };
+    case actionTypes.ADD_ORDERS_SUCCESS:
+      return {
+        ...state,
+        loading: action.loading,
+      };
+    case actionTypes.ADD_ORDERS_FAILED:
+      return {
+        ...state,
+        action,
       };
     default:
       return state;

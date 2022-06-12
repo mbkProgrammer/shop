@@ -41,7 +41,7 @@ const Cart = ({ products }) => {
             const newCartsItem = products && products.find((product) => product.id === item.id);
             subTotal += (newCartsItem.price * item.quantity);
             return (
-              <CartCard data={newCartsItem} quantity={item.quantity} />
+              <CartCard data={newCartsItem} quantity={item.quantity} key={item.id} />
             );
           })}
         </tbody>

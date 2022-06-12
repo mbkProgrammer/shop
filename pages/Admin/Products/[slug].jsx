@@ -1,5 +1,4 @@
 /* eslint-disable camelcase */
-import { useEffect, useState } from 'react';
 import Head from 'next/head';
 import { jsx, useTheme } from '@emotion/react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -111,6 +110,16 @@ const Products = ({ products, plan_id }) => {
       </style>
     </Layout>
   );
+};
+
+Products.getInitialProps = async ({ reduxStore, query }) => {
+  await reduxStore.dispatch(GET_PRODUCTS_ACTION());
+  const { products } = reduxStore.getState();
+  const plan_id = query;
+  return {
+    products: products.products,
+    plan_id,
+  };
 };
 
 export default Products;

@@ -16,13 +16,12 @@ const Header = () => {
 
   const accountClick = () => {
     if (!auth.response || !auth.response.email) {
-      router.replace('./Account/Auth');
+      router.push('../Account/Auth');
     } else if (auth.response.type === 'user') {
-      router.replace('./Account');
+      router.push('../Account');
     } else {
-      router.replace('./Account');
+      router.push('../Account');
     }
-    console.log('auth', auth);
   };
 
   const Nav = styled.ul`
@@ -123,7 +122,7 @@ const Header = () => {
         </button>
         <button
           type="button"
-          onClick={() => router.replace('/Account/Cart')}
+          onClick={() => router.push('/Account/Cart')}
           className={
             router.route.includes('/Cart')
               ? 'Header__button Cart active'

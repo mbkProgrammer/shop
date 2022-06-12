@@ -53,6 +53,7 @@ const Admin = ({ products }) => {
       <style jsx>
         {`
        .products__container {
+         width: 95%;
         margin-top: 30px;
         display: flex;
         justify-content: center;

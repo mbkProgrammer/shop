@@ -7,7 +7,7 @@ import { format } from 'date-fns';
 import { useRouter } from 'next/router';
 import { Typography } from '../../components';
 
-const Post = ({
+const OrderCard = ({
   id = 1,
   title = 'some text',
   body = 'some text',
@@ -21,19 +21,20 @@ const Post = ({
   if (window && document.body.offsetWidth < 600) {
     newTitle = title.length > length ? `${title.substring(0, length - 3)} ...` : title;
   }
+  // console.log('format(date', format(date, 'yyyy-MM-dd'));
   return (
-    <div className="Post" onClick={() => router.push(`Blog/${id}`)}>
+    <div className="OrderCard" onClick={() => router.push(`Blog/${id}`)}>
       <Typography variant="h6" css="color: inherit;">
-        {newTitle}
+        cds
       </Typography>
-      <div className="Post--click">
+      <div className="OrderCard--click">
         <BsFillArrowRightSquareFill />
       </div>
-      <div className="Post__date">{format(+date, 'yyyy-MM-dd')}</div>
+      <div className="OrderCard__date">csd</div>
 
       <style>
         {`
-        .Post {
+        .OrderCard {
           background-color: ${theme.colors.background};
           height: 5rem;
           margin: 10px;
@@ -48,16 +49,16 @@ const Post = ({
           transition: 0.4s;
         }
 
-        .Post:hover{
+        .OrderCard:hover{
           background-color: ${theme.colors.primary};
           color: ${theme.colors.background};
         }
 
-        .Post:hover .Post--click{
+        .OrderCard:hover .OrderCard--click{
           opacity: 1;
         }
 
-        .Post--click {
+        .OrderCard--click {
           font-size: 2rem;
           position: absolute;
           right: 0;
@@ -69,7 +70,7 @@ const Post = ({
           opacity: 0;
           transition: 0.8s;
         }
-        .Post__date {
+        .OrderCard__date {
           position: absolute;
           right: 0;
           bottom: 0;
@@ -84,4 +85,4 @@ const Post = ({
   );
 };
 
-export default Post;
+export default OrderCard;

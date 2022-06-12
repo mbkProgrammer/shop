@@ -29,7 +29,7 @@ const AddProducts = ({ show, setShow }) => {
   };
 
   return (
-    <form className={`AddProducts ${show ? 'active' : ''}`}>
+    <form className={`AddProducts ${show ? 'active' : ''}`} onSubmit={handleSubmit}>
       <Typography variant="h4" css="margin: 10px; text-align: center;">
         Add Products
       </Typography>
@@ -40,7 +40,7 @@ const AddProducts = ({ show, setShow }) => {
       <Space />
       <div className="AddProducts__btn">
         <Button onClick={() => setShow(false)}>Cancel</Button>
-        <Button varaint="contained" onClick={handleSubmit} type="submit">Submit</Button>
+        <Button varaint="contained" type="submit">Submit</Button>
       </div>
       <Space />
 

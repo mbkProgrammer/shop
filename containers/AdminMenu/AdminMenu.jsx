@@ -2,12 +2,13 @@ import { useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
 import { BsPower, BsShop } from 'react-icons/bs';
 import { useDispatch } from 'react-redux';
-import { SiMicrodotblog } from 'react-icons/si';
 import { useRouter } from 'next/router';
 import { AiOutlineBars, AiOutlineClose } from 'react-icons/ai';
 import { useState } from 'react';
+import { FiUsers } from 'react-icons/fi';
+import { MdOutlineArticle } from 'react-icons/md';
+import { GiShoppingCart } from 'react-icons/gi';
 import { LOG_OUT_ACTION } from '../../actions';
-import { Button } from '../../components';
 
 const AdminMenu = () => {
   const theme = useTheme();
@@ -94,10 +95,17 @@ const AdminMenu = () => {
         <MenuBtnText>Products</MenuBtnText>
       </MenuBtn>
       <MenuBtn
+        onClick={() => router.push('/Admin/Orders')}
+        className={router.route === '/Admin/Orders' ? 'active' : ''}
+      >
+        <MenuBtnIcon><GiShoppingCart /></MenuBtnIcon>
+        <MenuBtnText>Orders</MenuBtnText>
+      </MenuBtn>
+      <MenuBtn
         onClick={() => router.push('/Admin/Blog')}
         className={router.route === '/Admin/Blog' ? 'active' : ''}
       >
-        <MenuBtnIcon><SiMicrodotblog /></MenuBtnIcon>
+        <MenuBtnIcon><MdOutlineArticle /></MenuBtnIcon>
         <MenuBtnText>Blog</MenuBtnText>
       </MenuBtn>
 

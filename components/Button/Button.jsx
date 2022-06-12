@@ -4,7 +4,7 @@ import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
 
 const Button = ({
-  varaint, children, onClick, size, styles,
+  varaint, children, onClick, size, styles, ...props
 }) => {
   const theme = useTheme();
 
@@ -67,7 +67,7 @@ const Button = ({
   `;
 
   return (
-    <Button className={`btn--${varaint} btn--${size} `} onClick={onClick}>
+    <Button className={`btn--${varaint} btn--${size} `} onClick={onClick} {...props}>
       {children}
     </Button>
   );

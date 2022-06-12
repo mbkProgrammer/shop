@@ -20,8 +20,14 @@ const AdminLayout = ({ children }) => {
           overflow: hidden;
         }
         .AdminLayout__container {
-          margin-left: 20px;
+          margin-left: 290px;
           margin-bottom: 40px;
+        }
+        @media (max-width: 560px) {
+          .AdminLayout__container {
+            margin-left: 20px;
+            margin-bottom: 40px;
+          }
         }
       `}
       </style>

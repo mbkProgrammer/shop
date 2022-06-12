@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Stepper from 'react-stepper-horizontal/lib/Stepper';
 import { AiOutlineCheckCircle } from 'react-icons/ai';
-import { SET_ORDERS_PAYMENT_ACTION, UPDATE_CART } from '../../../../../actions';
+import { UPDATE_CART } from '../../../../../actions';
 import {
   Button, Space, Typography,
 } from '../../../../../components';
@@ -20,13 +20,8 @@ const Payment = () => {
   const [loadPayment, setLoadPayment] = useState(false);
 
   useEffect(() => {
-    if (delivary && carts.length !== 0) {
-      SET_ORDERS_PAYMENT_ACTION(dispatch, { payment: true });
-      UPDATE_CART(dispatch, { carts: [] });
-      setLoadPayment(true);
-    } else {
-      router.push('/');
-    }
+    UPDATE_CART(dispatch, { carts: [] });
+    setLoadPayment(true);
   }, []);
 
   return (
