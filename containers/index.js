@@ -9,3 +9,5 @@ export { default as AdminLayout } from './AdminLayout/AdminLayout';
 export { default as AddPost } from './AddPost/AddPost';
 export { default as AddProducts } from './AddProducts/AddProducts';
 export { default as OrderCard } from './OrderCard/OrderCard';
+export { default as UserLayout } from './UserLayout/UserLayout';
+export { default as UserMenu } from './UserMenu/UserMenu';

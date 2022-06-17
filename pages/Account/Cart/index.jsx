@@ -10,7 +10,6 @@ import {
 } from '../../../components';
 import { GET_PRODUCTS_ACTION } from '../../../actions';
 import CartCard from '../../../containers/CartCard/CartCard';
-import cart from '../../../reducers/cart';
 
 const Cart = ({ products }) => {
   const theme = useTheme();
