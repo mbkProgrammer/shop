@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Stepper from 'react-stepper-horizontal/lib/Stepper';
 import { async } from 'regenerator-runtime';
-import { ADD_ORDERS_ACTION, GET_ORDERS_ACTION } from '../../../../actions';
+import { ADD_ADMIN_ORDERS_ACTION, ADD_ORDERS_ACTION, GET_ORDERS_ACTION } from '../../../../actions';
 import {
   Button,
   Input,
@@ -26,7 +26,10 @@ const Delivary = () => {
   const [delivaryInfoError, setDelivaryInfoError] = useState(false);
 
   useEffect(() => {
-    if (carts.length === 0) {
+    if (!auth || !auth.response || !auth.response.id
+    ) {
+      router.push('/Account/Auth');
+    } else if (carts.length === 0) {
       router.push('/');
     }
   }, []);
@@ -45,7 +48,12 @@ const Delivary = () => {
         order: carts,
         address: delivaryInfo,
       }),
+
     );
+    dispatch(ADD_ADMIN_ORDERS_ACTION({
+      order: carts,
+      address: delivaryInfo,
+    }));
     router.push('/Account/Cart/Delivery/Payment');
   };
 

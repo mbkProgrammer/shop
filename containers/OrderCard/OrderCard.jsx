@@ -19,7 +19,7 @@ const OrderCard = ({ data, route, products }) => {
 
   useEffect(() => {
     setTotalPrice(totalPriceTpm);
-  }, [totalPriceTpm])
+  }, [totalPriceTpm]);
 
   return (
     <div className="OrderCard" onClick={() => router.push(route)}>
@@ -34,15 +34,14 @@ const OrderCard = ({ data, route, products }) => {
         <BsFillArrowRightSquareFill />
       </div>
       <Space />
-      <div>
+      <div className="Order__product__container">
         {data.order.map((item) => {
           const newCartsItem = products && products.find((product) => product.id === item.id);
           totalPriceTpm += (+newCartsItem.price * +item.quantity);
-          console.log('item', totalPrice);
           return (
-            <div>
-              <Image src={`/${newCartsItem && newCartsItem.img}`} width="40px" height="60px" />
-              <div className="quantity">{item.quantity}</div>
+            <div className="Order__product">
+              <Image src={`/${newCartsItem && newCartsItem.img}`} width="70px" height="40px" />
+              <div className="Order__product__quantity">{item.quantity}</div>
             </div>
           );
         }) }
@@ -53,7 +52,8 @@ const OrderCard = ({ data, route, products }) => {
         {`
         .OrderCard {
           background-color: ${theme.colors.background};
-          height: 10rem;
+          min-height: 10rem;
+          max-height: 15rem;
           margin: 10px;
           padding: 10px;
           border: 1px solid ${theme.colors.primary};
@@ -102,6 +102,37 @@ const OrderCard = ({ data, route, products }) => {
           font-weight: 400;
           font-size: 0.8rem;
         }
+
+        .Order__product__container {
+          display: flex;
+          align-items: center;
+        }
+
+        .Order__product {
+          width: 70px;
+          height: 70px;
+          margin: 5px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          border: 1px solid ${theme.colors.primary};
+        }
+
+        .Order__product__quantity {
+          border-radius: 50%;
+          padding: 2px 5px;
+          margin: 4px;
+          border: 1px solid ${theme.colors.primary};
+          color: inherit;
+        }
+
+        .OrderCard:hover .Order__product {
+          border: 1px solid ${theme.colors.secondary};
+        }
+        .OrderCard:hover .Order__product__quantity {
+          border: 1px solid ${theme.colors.secondary};
+        }
+
         @media (max-width: 560px) {
           .OrderCard {
             width: 85vw;

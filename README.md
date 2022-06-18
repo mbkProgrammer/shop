@@ -1,10 +1,13 @@
 # responsive shop
 ## Getting Started
+# IMPORTANT !!!!
+salam ostad khaste nabashid, site fake ql bug khorde api ash kar nemikone jadidan, ba mockend ham test kardam oon faghat mishod data ha ro greft emkan taghir  nadasht,
+sakhtar api ro to file testApi.json gozashtam
+alan site kamel doroste age api ash dorost beshe kamel kar mikone
+
+baraye ezafe kardan post be blog ba email (admin@gmail.com), password (admin1234) vared panel admin beshid dar bakhsh blog mitonid post ezafe konid
 
 First, run the development server:
-
-first api
-https://621a25d381d4074e85ba9ca0.mockapi.io/users
 
 ```bash
 npm run dev

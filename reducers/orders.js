@@ -36,6 +36,21 @@ const orders = (state = {}, action) => {
         ...state,
         action,
       };
+    case actionTypes.ADD_ADMIN_ORDERS_STARTED:
+      return {
+        ...state,
+        loading: action.loading,
+      };
+    case actionTypes.ADD_ADMIN_ORDERS_SUCCESS:
+      return {
+        ...state,
+        loading: action.loading,
+      };
+    case actionTypes.ADD_ADMIN_ORDERS_FAILED:
+      return {
+        ...state,
+        action,
+      };
     default:
       return state;
   }
