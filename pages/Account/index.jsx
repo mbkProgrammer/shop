@@ -13,8 +13,6 @@ const Account = ({ products, orders }) => {
   const router = useRouter();
   const dispatch = useDispatch();
 
-  console.log('first', orders);
-
   useEffect(() => {
     if (!auth.response || !auth.response.email) {
       router.replace('./Account/Auth');

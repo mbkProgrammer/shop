@@ -13,9 +13,6 @@ const Orders = ({ products, orders }) => {
   const router = useRouter();
   const dispatch = useDispatch();
 
-
-  console.log(orders);
-
   useEffect(() => {
     if (!auth.response || !auth.response.email) {
       router.push('../Account/Auth');
@@ -36,7 +33,7 @@ const Orders = ({ products, orders }) => {
       <AdminLayout>
         {orders ? orders.map((data) => (
           <OrderCard data={data} key={data.id} route={`./Admin/Orders/${data.id}`} products={products} />
-        )) : ""}
+        )) : ''}
 
       </AdminLayout>
     </Layout>
